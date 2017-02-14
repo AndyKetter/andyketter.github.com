@@ -1,10 +1,10 @@
 
-  <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
-    <title>归档: 2017 | 白马非白</title>
+    <title>tags | 白马非白</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="AndyKetter">
@@ -13,12 +13,13 @@
     
     <meta name="description" content="嘻嘻~你又点进来看我了？">
 <meta property="og:type" content="website">
-<meta property="og:title" content="白马非白">
-<meta property="og:url" content="https://andyketter.github.io/archives/2017/index.html">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="https://andyketter.github.io/categories/index.html">
 <meta property="og:site_name" content="白马非白">
 <meta property="og:description" content="嘻嘻~你又点进来看我了？">
+<meta property="og:updated_time" content="2017-02-14T02:45:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="白马非白">
+<meta name="twitter:title" content="tags">
 <meta name="twitter:description" content="嘻嘻~你又点进来看我了？">
 
     
@@ -75,74 +76,17 @@
 </div>
       </header>
       <div id="container">
-        
-
+          
 <div class="archive-title" >
-  <h2 class="archive-icon">2017</h2>
-  
-  <div class="archiveslist archive-float clearfix">
-   <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017 年 02 月</a><span class="archive-list-count">4</span></li></ul>
- </div>
-  
+<h2 class="tag-icon">标签</h2>
+
 </div>
-<div id="main" class="archive-part clearfix">
-  <div id="archive-page">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2017/02/13/new-page/" title="new page" itemprop="url">
-  
-
-    <time datetime="2017-02-13T08:43:46.000Z" itemprop="datePublished">2017-02-13</time>
-
-
-    <h1 itemprop="name">new page</h1>
-
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2017/02/13/mohan2/" title="mohan2" itemprop="url">
-  
-
-    <time datetime="2017-02-13T08:42:36.000Z" itemprop="datePublished">2017-02-13</time>
-
-
-    <h1 itemprop="name">mohan2</h1>
-
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2017/02/13/mohan/" title="mohan" itemprop="url">
-  
-
-    <time datetime="2017-02-13T08:41:30.000Z" itemprop="datePublished">2017-02-13</time>
-
-
-    <h1 itemprop="name">mohan</h1>
-
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2017/02/13/hello-world/" title="Hello World" itemprop="url">
-  
-
-    <time datetime="2017-02-13T07:55:54.015Z" itemprop="datePublished">2017-02-13</time>
-
-
-    <h1 itemprop="name">Hello World</h1>
-
-  </a>
-</section>
-
-
-  </div>
+<div id="main" class="archive-part">
+<div class="all-list-box"></div>
 </div>
+
+
+
 
       </div>
       <footer><div id="footer" >
@@ -237,10 +181,40 @@ $(document).ready(function(){
 
 
 
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"墨含"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
 
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var list    = $('.archive-title a'),
+      box     = $('.all-list-box'),
+      first   = $('.archive-title a:first-of-type');
+      box.load(first.attr('data-src').toString()+' #archive-page');
+      first.addClass('current');
+  list.each(function(){
+    $(this).click(function(){
+      var listSrc=$(this).attr('data-src').toString()+' #archive-page';
+      box.load(listSrc);
+      list.removeClass('current');
+      $(this).addClass('current');
+     });  
+    });
+  }); 
+</script>
 
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
