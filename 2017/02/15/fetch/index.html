@@ -16,7 +16,7 @@
   
   
   
-    <meta name="description" content="你若安好便是晴天">
+    <meta name="description" content="window.fetch polyfillThe fetch() function is a Promise-based mechanism for programatically makingweb requests in the browser. This project is a polyfill that implements a subsetof the standard Fetc...">
   
   <title>fetch [ 白马非白 ]</title>
   
@@ -98,6 +98,13 @@
             
           </li>
         
+          
+            <li>
+          
+            <a href="/message">留言</a>
+            
+          </li>
+        
         </ul>
       </div>
       <div id="show-menu">
@@ -146,14 +153,96 @@
       
     </p>
     
-    
+    <h1 id="window-fetch-polyfill"><a href="#window-fetch-polyfill" class="headerlink" title="window.fetch polyfill"></a>window.fetch polyfill</h1><p>The <code>fetch()</code> function is a Promise-based mechanism for programatically making<br>web requests in the browser. This project is a polyfill that implements a subset<br>of the standard <a href="https://fetch.spec.whatwg.org" target="_blank" rel="external">Fetch specification</a>, enough to make <code>fetch</code> a viable<br>replacement for most uses of XMLHttpRequest in traditional web applications.</p>
+<p>This project adheres to the <a href="http://todogroup.org/opencodeofconduct/#fetch/opensource@github.com" target="_blank" rel="external">Open Code of Conduct</a>. By participating, you are<br>expected to uphold this code.</p>
+<h2 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h2><ul>
+<li><a href="#read-this-first">Read this first</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#html">HTML</a></li>
+<li><a href="#json">JSON</a></li>
+<li><a href="#response-metadata">Response metadata</a></li>
+<li><a href="#post-form">Post form</a></li>
+<li><a href="#post-json">Post JSON</a></li>
+<li><a href="#file-upload">File upload</a></li>
+<li><a href="#caveats">Caveats</a><ul>
+<li><a href="#handling-http-error-statuses">Handling HTTP error statuses</a></li>
+<li><a href="#sending-cookies">Sending cookies</a></li>
+<li><a href="#receiving-cookies">Receiving cookies</a></li>
+<li><a href="#obtaining-the-response-url">Obtaining the Response URL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#browser-support">Browser Support</a></li>
+</ul>
+<h2 id="Read-this-first"><a href="#Read-this-first" class="headerlink" title="Read this first"></a>Read this first</h2><ul>
+<li><p>If you believe you found a bug with how <code>fetch</code> behaves in Chrome or Firefox,<br>please <strong>avoid opening an issue in this repository</strong>. This project is a<br><em>polyfill</em>, and since Chrome and Firefox both implement the <code>window.fetch</code><br>function natively, no code from this project actually takes any effect in<br>these browsers. See <a href="#browser-support">Browser support</a> for detailed<br>information.</p>
+</li>
+<li><p>If you have trouble <strong>making a request to another domain</strong> (a different<br>subdomain or port number also constitutes as another domain), please<br>familiarize yourself with all the intricacies and limitations of <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">CORS</a><br>requests. Because CORS requires participation of the server by implementing<br>specific HTTP response headers, it is often nontrivial to set up or debug.<br>CORS is exclusively handled by the browser’s internal mechanisms which this<br>polyfill cannot influence.</p>
+</li>
+<li><p>If you have trouble <strong>maintaining the user’s session</strong> or <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet" target="_blank" rel="external">CSRF</a> protection<br>through <code>fetch</code> requests, please ensure that you’ve read and understood the<br><a href="#sending-cookies">Sending cookies</a> section.</p>
+</li>
+<li><p>If this polyfill <strong>doesn’t work under Node.js environment</strong>, that is expected,<br>because this project is meant for web browsers only. You should ensure that your<br>application doesn’t try to package and run this on the server.</p>
+</li>
+<li><p>If you have an idea for a new feature of <code>fetch</code>, please understand that we<br>are only ever going to add features and APIs that are a part of the<br><a href="https://fetch.spec.whatwg.org" target="_blank" rel="external">Fetch specification</a>. You should <strong>submit your feature requests</strong> to the<br><a href="https://github.com/whatwg/fetch/issues" target="_blank" rel="external">repository of the specification</a><br>itself, rather than this repository.</p>
+</li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><ul>
+<li><p><code>npm install whatwg-fetch --save</code>; or</p>
+</li>
+<li><p><code>bower install fetch</code>.</p>
+</li>
+</ul>
+<p>You will also need a Promise polyfill for <a href="http://caniuse.com/#feat=promises" target="_blank" rel="external">older browsers</a>.<br>We recommend <a href="https://github.com/taylorhakes/promise-polyfill" target="_blank" rel="external">taylorhakes/promise-polyfill</a><br>for its small size and Promises/A+ compatibility.</p>
+<p>For use with webpack, add this package in the <code>entry</code> configuration option<br>before your application entry point:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">entry: [<span class="string">'whatwg-fetch'</span>, ...]</div></pre></td></tr></table></figure>
+<p>For Babel and ES2015+, make sure to import the file:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'whatwg-fetch'</span></div></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>For a more comprehensive API reference that this polyfill supports, refer to<br><a href="https://github.github.io/fetch/" target="_blank" rel="external">https://github.github.io/fetch/</a>.</p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fetch(<span class="string">'/users.html'</span>)</div><div class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> response.text()</div><div class="line">  &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">body</span>) </span>&#123;</div><div class="line">    <span class="built_in">document</span>.body.innerHTML = body</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">fetch(<span class="string">'/users.json'</span>)</div><div class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> response.json()</div><div class="line">  &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'parsed json'</span>, json)</div><div class="line">  &#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">ex</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'parsing failed'</span>, ex)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<h3 id="Response-metadata"><a href="#Response-metadata" class="headerlink" title="Response metadata"></a>Response metadata</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fetch(<span class="string">'/users.json'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(response.headers.get(<span class="string">'Content-Type'</span>))</div><div class="line">  <span class="built_in">console</span>.log(response.headers.get(<span class="string">'Date'</span>))</div><div class="line">  <span class="built_in">console</span>.log(response.status)</div><div class="line">  <span class="built_in">console</span>.log(response.statusText)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="Post-form"><a href="#Post-form" class="headerlink" title="Post form"></a>Post form</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.querySelector(<span class="string">'form'</span>)</div><div class="line"></div><div class="line">fetch(<span class="string">'/users'</span>, &#123;</div><div class="line">  <span class="attr">method</span>: <span class="string">'POST'</span>,</div><div class="line">  <span class="attr">body</span>: <span class="keyword">new</span> FormData(form)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="Post-JSON"><a href="#Post-JSON" class="headerlink" title="Post JSON"></a>Post JSON</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">fetch(<span class="string">'/users'</span>, &#123;</div><div class="line">  <span class="attr">method</span>: <span class="string">'POST'</span>,</div><div class="line">  <span class="attr">headers</span>: &#123;</div><div class="line">    <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">body</span>: <span class="built_in">JSON</span>.stringify(&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'Hubot'</span>,</div><div class="line">    <span class="attr">login</span>: <span class="string">'hubot'</span>,</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="File-upload"><a href="#File-upload" class="headerlink" title="File upload"></a>File upload</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> input = <span class="built_in">document</span>.querySelector(<span class="string">'input[type="file"]'</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> data = <span class="keyword">new</span> FormData()</div><div class="line">data.append(<span class="string">'file'</span>, input.files[<span class="number">0</span>])</div><div class="line">data.append(<span class="string">'user'</span>, <span class="string">'hubot'</span>)</div><div class="line"></div><div class="line">fetch(<span class="string">'/avatars'</span>, &#123;</div><div class="line">  <span class="attr">method</span>: <span class="string">'POST'</span>,</div><div class="line">  <span class="attr">body</span>: data</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="Caveats"><a href="#Caveats" class="headerlink" title="Caveats"></a>Caveats</h3><p>The <code>fetch</code> specification differs from <code>jQuery.ajax()</code> in mainly two ways that<br>bear keeping in mind:</p>
+<ul>
+<li><p>The Promise returned from <code>fetch()</code> <strong>won’t reject on HTTP error status</strong><br>even if the response is a HTTP 404 or 500. Instead, it will resolve normally,<br>and it will only reject on network failure, or if anything prevented the<br>request from completing.</p>
+</li>
+<li><p>By default, <code>fetch</code> <strong>won’t send or receive any cookies</strong> from the server,<br>resulting in unauthenticated requests if the site relies on maintaining a user<br>session. See <a href="#sending-cookies">Sending cookies</a> for how to opt into cookie<br>handling.</p>
+</li>
+</ul>
+<h4 id="Handling-HTTP-error-statuses"><a href="#Handling-HTTP-error-statuses" class="headerlink" title="Handling HTTP error statuses"></a>Handling HTTP error statuses</h4><p>To have <code>fetch</code> Promise reject on HTTP error statuses, i.e. on any non-2xx<br>status, define a custom response handler:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkStatus</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (response.status &gt;= <span class="number">200</span> &amp;&amp; response.status &lt; <span class="number">300</span>) &#123;</div><div class="line">    <span class="keyword">return</span> response</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">var</span> error = <span class="keyword">new</span> <span class="built_in">Error</span>(response.statusText)</div><div class="line">    error.response = response</div><div class="line">    <span class="keyword">throw</span> error</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseJSON</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> response.json()</div><div class="line">&#125;</div><div class="line"></div><div class="line">fetch(<span class="string">'/users'</span>)</div><div class="line">  .then(checkStatus)</div><div class="line">  .then(parseJSON)</div><div class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'request succeeded with JSON response'</span>, data)</div><div class="line">  &#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'request failed'</span>, error)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<h4 id="Sending-cookies"><a href="#Sending-cookies" class="headerlink" title="Sending cookies"></a>Sending cookies</h4><p>To automatically send cookies for the current domain, the <code>credentials</code> option<br>must be provided:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fetch(<span class="string">'/users'</span>, &#123;</div><div class="line">  <span class="attr">credentials</span>: <span class="string">'same-origin'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>The “same-origin” value makes <code>fetch</code> behave similarly to XMLHttpRequest with<br>regards to cookies. Otherwise, cookies won’t get sent, resulting in these<br>requests not preserving the authentication session.</p>
+<p>For <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">CORS</a> requests, use the “include” value to allow sending credentials to<br>other domains:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fetch(<span class="string">'https://example.com:1234/users'</span>, &#123;</div><div class="line">  <span class="attr">credentials</span>: <span class="string">'include'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="Receiving-cookies"><a href="#Receiving-cookies" class="headerlink" title="Receiving cookies"></a>Receiving cookies</h4><p>Like with XMLHttpRequest, the <code>Set-Cookie</code> response header returned from the<br>server is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name" target="_blank" rel="external">forbidden header name</a> and therefore can’t be programatically<br>read with <code>response.headers.get()</code>. Instead, it’s the browser’s responsibility<br>to handle new cookies being set (if applicable to the current URL). Unless they<br>are HTTP-only, new cookies will be available through <code>document.cookie</code>.</p>
+<p>Bear in mind that the default behavior of <code>fetch</code> is to ignore the <code>Set-Cookie</code><br>header completely. To opt into accepting cookies from the server, you must use<br>the <code>credentials</code> option.</p>
+<h4 id="Obtaining-the-Response-URL"><a href="#Obtaining-the-Response-URL" class="headerlink" title="Obtaining the Response URL"></a>Obtaining the Response URL</h4><p>Due to limitations of XMLHttpRequest, the <code>response.url</code> value might not be<br>reliable after HTTP redirects on older browsers.</p>
+<p>The solution is to configure the server to set the response HTTP header<br><code>X-Request-URL</code> to the current URL after any redirect that might have happened.<br>It should be safe to set it unconditionally.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Ruby on Rails controller example</span></div><div class="line">response.headers[<span class="string">'X-Request-URL'</span>] = request.url</div></pre></td></tr></table></figure>
+<p>This server workaround is necessary if you need reliable <code>response.url</code> in<br>Firefox &lt; 32, Chrome &lt; 37, Safari, or IE.</p>
+<h2 id="Browser-Support"><a href="#Browser-Support" class="headerlink" title="Browser Support"></a>Browser Support</h2><ul>
+<li>Chrome</li>
+<li>Firefox</li>
+<li>Safari 6.1+</li>
+<li>Internet Explorer 10+</li>
+</ul>
+<p>Note: modern browsers such as Chrome, Firefox, and Microsoft Edge contain native<br>implementations of <code>window.fetch</code>, therefore the code from this polyfill doesn’t<br>have any effect on those browsers. If you believe you’ve encountered an error<br>with how <code>window.fetch</code> is implemented in any of these browsers, you should file<br>an issue with that browser vendor instead of this project.</p>
+<pre><code>&quot;Cross-origin resource sharing&quot;
+</code></pre><pre><code>&quot;Cross-site request forgery&quot;
+</code></pre>
   </article>
   <div class="random-toc-area">
   <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
   <div class="random-toc">
     <h2>目录</h2>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#window-fetch-polyfill"><span class="toc-text">window.fetch polyfill</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Table-of-Contents"><span class="toc-text">Table of Contents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Read-this-first"><span class="toc-text">Read this first</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage"><span class="toc-text">Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON"><span class="toc-text">JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Response-metadata"><span class="toc-text">Response metadata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Post-form"><span class="toc-text">Post form</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Post-JSON"><span class="toc-text">Post JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File-upload"><span class="toc-text">File upload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Caveats"><span class="toc-text">Caveats</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Handling-HTTP-error-statuses"><span class="toc-text">Handling HTTP error statuses</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sending-cookies"><span class="toc-text">Sending cookies</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Receiving-cookies"><span class="toc-text">Receiving cookies</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Obtaining-the-Response-URL"><span class="toc-text">Obtaining the Response URL</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Browser-Support"><span class="toc-text">Browser Support</span></a></li></ol></li></ol>
   </div>
 </div>
 
@@ -309,7 +398,7 @@ var turnoffBackgroundImage = false;
   turnoffBackgroundImage = true;
 
 
-var backgroundColor = "rgba(244,232,208,0.95)";
+var backgroundColor = "rgba(244, 232, 208, 0.95)";
 
 $(".fancybox-thumb").fancybox({
   prevEffect: 'none',
