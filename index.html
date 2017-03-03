@@ -331,7 +331,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://andyketter.github.io/2017/03/03/React-router-redux/">
+  <link itemprop="mainEntityOfPage" href="https://andyketter.github.io/2017/02/24/Redux/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="墨含">
@@ -356,8 +356,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/03/React-router-redux/" itemprop="url">
-                  未命名
+                <a class="post-title-link" href="/2017/02/24/Redux/" itemprop="url">
+                  Redux
                 </a>
               
             
@@ -373,8 +373,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-03T14:11:23+08:00">
-                2017-03-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-24T13:21:25+08:00">
+                2017-02-24
               </time>
             
 
@@ -384,366 +384,27 @@
           </span>
 
           
-
-          
+            <span class="post-category" >
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/03/React-router-redux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/03/React-router-redux/" itemprop="commentCount"></span>
-                </a>
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="react-router-redux"><a href="#react-router-redux" class="headerlink" title="react-router-redux"></a>react-router-redux</h1><p><a href="https://www.npmjs.com/package/react-router-redux" target="_blank" rel="external"><img src="https://img.shields.io/npm/v/react-router-redux.svg?style=flat-square" alt="npm version"></a> <a href="https://www.npmjs.com/package/react-router-redux" target="_blank" rel="external"><img src="https://img.shields.io/npm/dm/react-router-redux.svg?style=flat-square" alt="npm downloads"></a> <a href="https://travis-ci.org/reactjs/react-router-redux" target="_blank" rel="external"><img src="https://img.shields.io/travis/reactjs/react-router-redux/master.svg?style=flat-square" alt="build status"></a></p>
-<blockquote>
-<p><strong>Keep your router in sync with application state</strong> :sparkles:</p>
-</blockquote>
-<p><em>Formerly known as redux-simple-router</em></p>
-<p>You’re a smart person. You use <a href="https://github.com/reactjs/redux" target="_blank" rel="external">Redux</a> to manage your application state. You use <a href="https://github.com/reactjs/react-router" target="_blank" rel="external">React Router</a> to do routing. All is good.</p>
-<p>But the two libraries don’t coordinate. You want to do time travel with your application state, but React Router doesn’t navigate between pages when you replay actions. It controls an important part of application state: the URL.</p>
-<p>This library helps you keep that bit of state in sync with your Redux store. We keep a copy of the current location hidden in state. When you rewind your application state with a tool like <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="external">Redux DevTools</a>, that state change is propagated to React Router so it can adjust the component tree accordingly. You can jump around in state, rewinding, replaying, and resetting as much as you’d like, and this library will ensure the two stay in sync at all times.</p>
-<p><strong>This library is not <em>necessary</em> for using Redux together with React Router. You can use the two together just fine without any additional libraries. It is useful if you care about recording, persisting, and replaying user actions, using time travel. If you don’t care about these features, just <a href="http://stackoverflow.com/questions/36722584/how-to-sync-redux-state-and-url-hash-tag-params/36749963#36749963" target="_blank" rel="external">use Redux and React Router directly</a>.</strong></p>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save react-router-redux</div></pre></td></tr></table></figure>
-<h2 id="How-It-Works"><a href="#How-It-Works" class="headerlink" title="How It Works"></a>How It Works</h2><p>This library allows you to use React Router’s APIs as they are documented. And, you can use redux like you normally would, with a single app state. The library simply enhances a history instance to allow it to synchronize any changes it receives into application state.</p>
-<p><a href="https://github.com/reactjs/history" target="_blank" rel="external">history</a> + <code>store</code> (<a href="https://github.com/reactjs/redux" target="_blank" rel="external">redux</a>) &rarr; <a href="https://github.com/reactjs/react-router-redux" target="_blank" rel="external"><strong>react-router-redux</strong></a> &rarr; enhanced <a href="https://github.com/reactjs/history" target="_blank" rel="external">history</a> &rarr; <a href="https://github.com/reactjs/react-router" target="_blank" rel="external">react-router</a></p>
-<h2 id="Tutorial"><a href="#Tutorial" class="headerlink" title="Tutorial"></a>Tutorial</h2><p>Let’s take a look at a simple example.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></div><div class="line"><span class="keyword">import</span> &#123; createStore, combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span></div><div class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></div><div class="line"><span class="keyword">import</span> &#123; Router, Route, browserHistory &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></div><div class="line"><span class="keyword">import</span> &#123; syncHistoryWithStore, routerReducer &#125; <span class="keyword">from</span> <span class="string">'react-router-redux'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> reducers <span class="keyword">from</span> <span class="string">'&lt;project-path&gt;/reducers'</span></div><div class="line"></div><div class="line"><span class="comment">// Add the reducer to your store on the `routing` key</span></div><div class="line"><span class="keyword">const</span> store = createStore(</div><div class="line">  combineReducers(&#123;</div><div class="line">    ...reducers,</div><div class="line">    <span class="attr">routing</span>: routerReducer</div><div class="line">  &#125;)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment">// Create an enhanced history that syncs navigation events with the store</span></div><div class="line"><span class="keyword">const</span> history = syncHistoryWithStore(browserHistory, store)</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">    &#123; /* Tell the Router to use our enhanced history */ &#125;</div><div class="line">    &lt;Router history=&#123;history&#125;&gt;</div><div class="line">      &lt;Route path="/" component=&#123;App&#125;&gt;</div><div class="line">        &lt;Route path="foo" component=&#123;Foo&#125;/&gt;</div><div class="line">        &lt;Route path="bar" component=&#123;Bar&#125;/&gt;</div><div class="line">      &lt;/Route&gt;</div><div class="line">    &lt;/Router&gt;</div><div class="line">  &lt;/Provider&gt;,</div><div class="line">  document.getElementById('mount')</div><div class="line">)</div></pre></td></tr></table></figure>
-<p>Now any time you navigate, which can come from pressing browser buttons or navigating in your application code, the enhanced history will first pass the new location through the Redux store and then on to React Router to update the component tree. If you time travel, it will also pass the new state to React Router to update the component tree again.</p>
-<h4 id="How-do-I-watch-for-navigation-events-such-as-for-analytics"><a href="#How-do-I-watch-for-navigation-events-such-as-for-analytics" class="headerlink" title="How do I watch for navigation events, such as for analytics?"></a>How do I watch for navigation events, such as for analytics?</h4><p>Simply listen to the enhanced history via <code>history.listen</code>. This takes in a function that will receive a <code>location</code> any time the store updates. This includes any time travel activity performed on the store.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> history = syncHistoryWithStore(browserHistory, store)</div><div class="line"></div><div class="line">history.listen(<span class="function"><span class="params">location</span> =&gt;</span> analyticsService.track(location.pathname))</div></pre></td></tr></table></figure>
-<p>For other kinds of events in your system, you can use middleware on your Redux store like normal to watch any action that is dispatched to the store.</p>
-<h4 id="What-if-I-use-Immutable-js-or-another-state-wrapper-with-my-Redux-store"><a href="#What-if-I-use-Immutable-js-or-another-state-wrapper-with-my-Redux-store" class="headerlink" title="What if I use Immutable.js or another state wrapper with my Redux store?"></a>What if I use Immutable.js or another state wrapper with my Redux store?</h4><p>When using a wrapper for your store’s state, such as Immutable.js, you will need to change two things from the standard setup:</p>
-<ol>
-<li>By default, the library expects to find the history state at <code>state.routing</code>. If your wrapper prevents accessing properties directly, or you want to put the routing state elsewhere, pass a selector function to access the historystate via the <code>selectLocationState</code> option on <code>syncHistoryWithStore</code>.</li>
-<li>Provide your own reducer function that will receive actions of type <code>LOCATION_CHANGE</code> and return the payload merged into the <code>locationBeforeTransitions</code> property of the routing state. For example, <code>state.set(&quot;routing&quot;, {locationBeforeTransitions: action.payload})</code>.</li>
-</ol>
-<p>These two hooks will allow you to store the state that this library uses in whatever format or wrapper you would like.</p>
-<h4 id="How-do-I-access-router-state-in-a-container-component"><a href="#How-do-I-access-router-state-in-a-container-component" class="headerlink" title="How do I access router state in a container component?"></a>How do I access router state in a container component?</h4><p>React Router <a href="https://github.com/ReactTraining/react-router/blob/master/docs/Introduction.md#getting-url-parameters" target="_blank" rel="external">provides route information via a route component’s props</a>. This makes it easy to access them from a container component. When using <a href="https://github.com/reactjs/react-redux" target="_blank" rel="external">react-redux</a> to <code>connect()</code> your components to state, you can access the router’s props from the <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options" target="_blank" rel="external">2nd argument of <code>mapStateToProps</code></a>:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state, ownProps</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">id</span>: ownProps.params.id,</div><div class="line">    <span class="attr">filter</span>: ownProps.location.query.filter</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>You should not read the location state directly from the Redux store. This is because React Router operates asynchronously (to handle things such as dynamically-loaded components) and your component tree may not yet be updated in sync with your Redux state. You should rely on the props passed by React Router, as they are only updated after it has processed all asynchronous code.</p>
-<h4 id="What-if-I-want-to-issue-navigation-events-via-Redux-actions"><a href="#What-if-I-want-to-issue-navigation-events-via-Redux-actions" class="headerlink" title="What if I want to issue navigation events via Redux actions?"></a>What if I want to issue navigation events via Redux actions?</h4><p>React Router provides singleton versions of history (<code>browserHistory</code> and <code>hashHistory</code>) that you can import and use from anywhere in your application. However, if you prefer Redux style actions, the library also provides a set of action creators and a middleware to capture them and redirect them to your history instance.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; createStore, combineReducers, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</div><div class="line"><span class="keyword">import</span> &#123; routerMiddleware, push &#125; <span class="keyword">from</span> <span class="string">'react-router-redux'</span></div><div class="line"></div><div class="line"><span class="comment">// Apply the middleware to the store</span></div><div class="line"><span class="keyword">const</span> middleware = routerMiddleware(browserHistory)</div><div class="line"><span class="keyword">const</span> store = createStore(</div><div class="line">  reducers,</div><div class="line">  applyMiddleware(middleware)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment">// Dispatch from anywhere like normal.</span></div><div class="line">store.dispatch(push(<span class="string">'/foo'</span>))</div></pre></td></tr></table></figure>
-<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><ul>
-<li><a href="/examples/basic">examples/basic</a> - basic reference implementation</li>
-</ul>
-<p>Examples from the community:</p>
-<ul>
-<li><a href="https://github.com/shakacode/react-webpack-rails-tutorial" target="_blank" rel="external">shakacode/react-webpack-rails-tutorial</a> - react-router-redux including <strong>Server Rendering</strong> using <a href="https://github.com/shakacode/react_on_rails/" target="_blank" rel="external">React on Rails</a>, live at <a href="http://www.reactrails.com/" target="_blank" rel="external">www.reactrails.com</a>.</li>
-<li><a href="https://github.com/davezuko/react-redux-starter-kit" target="_blank" rel="external">davezuko/react-redux-starter-kit</a> - popular redux starter kit<ul>
-<li><strong>tip</strong>: migrating from react-router-redux <code>^3.0.0</code>? use <a href="https://github.com/davezuko/react-redux-starter-kit/commit/0df26907" target="_blank" rel="external">this commit</a> as a reference</li>
-</ul>
-</li>
-<li><a href="https://github.com/svrcekmichal/universal-react" target="_blank" rel="external">svrcekmichal/universal-react</a> - Universal react app with async actions provided by <a href="https://github.com/svrcekmichal/reasync" target="_blank" rel="external">svrcekmichal/reasync</a> package</li>
-<li><a href="https://github.com/StevenIseki/react-router-redux-example" target="_blank" rel="external">steveniseki/react-router-redux-example</a> - minimal react-router-redux example includes css modules and universal rendering</li>
-<li><a href="https://github.com/choonkending/react-webpack-node" target="_blank" rel="external">choonkending/react-webpack-node</a> - Full-stack universal Redux App</li>
-<li><a href="https://github.com/kuy/treemap-with-router" target="_blank" rel="external">kuy/treemap-with-router</a> - An example for react-router-redux with d3’s treemap.</li>
-</ul>
-<p>&rarr; <em>Have an example to add? Send us a PR!</em> &larr;</p>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h4 id="routerReducer"><a href="#routerReducer" class="headerlink" title="routerReducer()"></a><code>routerReducer()</code></h4><p><strong>You must add this reducer to your store for syncing to work.</strong></p>
-<p>A reducer function that stores location updates from <code>history</code>. If you use <code>combineReducers</code>, it should be nested under the <code>routing</code> key.</p>
-<h4 id="history-syncHistoryWithStore-history-store-options"><a href="#history-syncHistoryWithStore-history-store-options" class="headerlink" title="history = syncHistoryWithStore(history, store, [options])"></a><code>history = syncHistoryWithStore(history, store, [options])</code></h4><p>Creates an enhanced history from the provided history. This history changes <code>history.listen</code> to pass all location updates through the provided store first. This ensures if the store is updated either from a navigation event or from a time travel action, such as a replay, the listeners of the enhanced history will stay in sync.</p>
-<p><strong>You must provide the enhanced history to your <code>&lt;Router&gt;</code> component.</strong> This ensures your routes stay in sync with your location and your store at the same time.</p>
-<p>The <code>options</code> object takes in the following optional keys:</p>
-<ul>
-<li><code>selectLocationState</code> - (default <code>state =&gt; state.routing</code>) A selector function to obtain the history state from your store. Useful when not using the provided <code>routerReducer</code> to store history state. Allows you to use wrappers, such as Immutable.js.</li>
-<li><code>adjustUrlOnReplay</code> - (default <code>true</code>) When <code>false</code>, the URL will not be kept in sync during time travel. This is useful when using <code>persistState</code> from Redux DevTools and not wanting to maintain the URL state when restoring state.</li>
-</ul>
-<h4 id="push-location-replace-location-go-number-goBack-goForward"><a href="#push-location-replace-location-go-number-goBack-goForward" class="headerlink" title="push(location), replace(location), go(number), goBack(), goForward()"></a><code>push(location)</code>, <code>replace(location)</code>, <code>go(number)</code>, <code>goBack()</code>, <code>goForward()</code></h4><p><strong>You must install <code>routerMiddleware</code> for these action creators to work.</strong></p>
-<p>Action creators that correspond with the [history methods of the same name]<br>(<a href="https://github.com/mjackson/history/blob/master/README.md#navigation" target="_blank" rel="external">https://github.com/mjackson/history/blob/master/README.md#navigation</a>). For reference they are defined as follows:</p>
-<ul>
-<li><code>push</code> - Pushes a new location to history, becoming the current location.</li>
-<li><code>replace</code> - Replaces the current location in history.</li>
-<li><code>go</code> - Moves backwards or forwards a relative number of locations in history.</li>
-<li><code>goForward</code> - Moves forward one location. Equivalent to <code>go(1)</code></li>
-<li><code>goBack</code> - Moves backwards one location. Equivalent to <code>go(-1)</code></li>
-</ul>
-<p>Both <code>push</code> and <code>replace</code> take in a <a href="https://github.com/ReactTraining/history/blob/v2/docs/Glossary.md#locationdescriptor" target="_blank" rel="external">location descriptor</a>, which can be an object describing the URL or a plain string URL.</p>
-<p>These action creators are also available in one single object as <code>routerActions</code>, which can be used as a convenience when using Redux’s <code>bindActionCreators()</code>.</p>
-<h4 id="routerMiddleware-history"><a href="#routerMiddleware-history" class="headerlink" title="routerMiddleware(history)"></a><code>routerMiddleware(history)</code></h4><p>A middleware you can apply to your Redux <code>store</code> to capture dispatched actions created by the action creators. It will redirect those actions to the provided <code>history</code> instance.</p>
-<h4 id="LOCATION-CHANGE"><a href="#LOCATION-CHANGE" class="headerlink" title="LOCATION_CHANGE"></a><code>LOCATION_CHANGE</code></h4><p>An action type that you can listen for in your reducers to be notified of route updates. Fires <em>after</em> any changes to history.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://andyketter.github.io/2017/03/03/React-router/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="墨含">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/author.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="白马非白">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="白马非白" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
               
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redux/" itemprop="url" rel="index">
+                    <span itemprop="name">Redux</span>
+                  </a>
+                </span>
+
                 
-                <a class="post-title-link" href="/2017/03/03/React-router/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-03T14:10:10+08:00">
-                2017-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/03/React-router/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/03/React-router/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="React-Router"><a href="#React-Router" class="headerlink" title="React Router  "></a>React Router <a href="https://travis-ci.org/ReactTraining/react-router" target="_blank" rel="external"><img src="https://img.shields.io/travis/ReactTraining/react-router/master.svg?style=flat-square" alt="Travis"></a> <a href="https://www.npmjs.org/package/react-router" target="_blank" rel="external"><img src="https://img.shields.io/npm/v/react-router.svg?style=flat-square" alt="npm package"></a></h1><p><img src="/logo/vertical@2x.png" height="150"></p>
-<p>React Router is a complete routing library for <a href="https://facebook.github.io/react" target="_blank" rel="external">React</a>.</p>
-<p>React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy code loading, dynamic route matching, and location transition handling built right in. Make the URL your first thought, not an after-thought.</p>
-<p><a href="https://codecov.io/gh/ReactTraining/react-router" target="_blank" rel="external"><img src="https://img.shields.io/codecov/c/github/ReactTraining/react-router/master.svg?style=flat-square" alt="Codecov"></a><br><a href="https://discord.gg/0ZcbPKXt5bYaNQ46" target="_blank" rel="external"><img src="https://img.shields.io/badge/Discord-join%20chat%20%E2%86%92-738bd7.svg?style=flat-square" alt="Discord"></a></p>
-<h3 id="v4-Is-Coming"><a href="#v4-Is-Coming" class="headerlink" title="v4 Is Coming"></a>v4 Is Coming</h3><p>The next version of React Router (v4) is in beta now.</p>
-<p><a href="https://reacttraining.com/react-router/" target="_blank" rel="external">v4 Documentation</a></p>
-<h3 id="Docs-amp-Help"><a href="#Docs-amp-Help" class="headerlink" title="Docs &amp; Help"></a>Docs &amp; Help</h3><ul>
-<li><a href="https://github.com/reactjs/react-router-tutorial" target="_blank" rel="external">Tutorial – do this first!</a></li>
-<li><a href="/docs">Guides and API docs (v2, v3)</a></li>
-<li><a href="https://github.com/ReactTraining/react-router/blob/master/docs/Troubleshooting.md" target="_blank" rel="external">Troubleshooting guide</a></li>
-<li><a href="/CHANGES.md">Changelog</a></li>
-<li><a href="http://stackoverflow.com/questions/tagged/react-router" target="_blank" rel="external">Stack Overflow</a></li>
-<li><a href="http://codepen.io/anon/pen/xwQZdy?editors=001" target="_blank" rel="external">CodePen boilerplate</a> for bug reports</li>
-</ul>
-<p><strong>Older Versions:</strong></p>
-<ul>
-<li>0.13.x - <a href="https://github.com/ReactTraining/react-router/tree/v0.13.6/doc" target="_blank" rel="external">docs</a> / <a href="https://github.com/ReactTraining/react-router/tree/v0.13.6/docs/guides" target="_blank" rel="external">guides</a> / <a href="https://github.com/ReactTraining/react-router/tree/v0.13.6" target="_blank" rel="external">code</a> / <a href="/upgrade-guides/v1.0.0.md">upgrade guide</a></li>
-<li>1.0.x - <a href="https://github.com/ReactTraining/react-router/tree/1.0.x/docs" target="_blank" rel="external">docs</a> / <a href="https://github.com/ReactTraining/react-router/tree/1.0.x" target="_blank" rel="external">code</a> / <a href="/upgrade-guides/v2.0.0.md">upgrade guide</a></li>
-</ul>
-<p>For questions and support, please visit <a href="https://discord.gg/0ZcbPKXt5bYaNQ46" target="_blank" rel="external">our channel on Reactiflux</a> or <a href="http://stackoverflow.com/questions/tagged/react-router" target="_blank" rel="external">Stack Overflow</a>.</p>
-<h3 id="Browser-Support"><a href="#Browser-Support" class="headerlink" title="Browser Support"></a>Browser Support</h3><p>We support all browsers and environments where React runs.</p>
-<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>Using <a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a>:</p>
-<pre><code>$ npm install --save react-router
-</code></pre><p>Then with a module bundler like <a href="https://webpack.github.io/" target="_blank" rel="external">webpack</a> that supports either CommonJS or ES2015 modules, use as you would anything else:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// using an ES6 transpiler, like babel</span></div><div class="line"><span class="keyword">import</span> &#123; Router, Route, Link &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></div><div class="line"></div><div class="line"><span class="comment">// not using an ES6 transpiler</span></div><div class="line"><span class="keyword">var</span> Router = <span class="built_in">require</span>(<span class="string">'react-router'</span>).Router</div><div class="line"><span class="keyword">var</span> Route = <span class="built_in">require</span>(<span class="string">'react-router'</span>).Route</div><div class="line"><span class="keyword">var</span> Link = <span class="built_in">require</span>(<span class="string">'react-router'</span>).Link</div></pre></td></tr></table></figure>
-<p>The UMD build is also available on <a href="https://unpkg.com" target="_blank" rel="external">unpkg</a>:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/react-router/umd/ReactRouter.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>You can find the library on <code>window.ReactRouter</code>.</p>
-<h3 id="What’s-it-look-like"><a href="#What’s-it-look-like" class="headerlink" title="What’s it look like?"></a>What’s it look like?</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span></div><div class="line"><span class="keyword">import</span> &#123; Router, Route, Link, browserHistory &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> App = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;)</div><div class="line"><span class="keyword">const</span> About = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;)</div><div class="line"><span class="keyword">const</span> NoMatch = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;)</div><div class="line"></div><div class="line"><span class="keyword">const</span> Users = React.createClass(&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Users<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"master"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">            &#123;/* use Link to route around the app */&#125;</div><div class="line">            &#123;this.state.users.map(user =&gt; (</div><div class="line">              <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;user.id&#125;</span>&gt;</span><span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&#123;</span>`/<span class="attr">user</span>/$&#123;<span class="attr">user.id</span>&#125;`&#125;&gt;</span>&#123;user.name&#125;<span class="tag">&lt;/<span class="name">Link</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            ))&#125;</div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"detail"</span>&gt;</span></div><div class="line">          &#123;this.props.children&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">const</span> User = React.createClass(&#123;</div><div class="line">  componentDidMount() &#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">      <span class="comment">// route components are rendered with useful information, like URL params</span></div><div class="line">      user: findUserById(<span class="keyword">this</span>.props.params.userId)</div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;this.state.user.name&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">        &#123;/* etc. */&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// Declarative route configuration (could also load this config lazily</span></div><div class="line"><span class="comment">// instead, all you really need is a single root route, you don't need to</span></div><div class="line"><span class="comment">// colocate the entire config).</span></div><div class="line">render((</div><div class="line">  &lt;Router history=&#123;browserHistory&#125;&gt;</div><div class="line">    &lt;Route path="/" component=&#123;App&#125;&gt;</div><div class="line">      &lt;Route path="about" component=&#123;About&#125;/&gt;</div><div class="line">      &lt;Route path="users" component=&#123;Users&#125;&gt;</div><div class="line">        &lt;Route path="/user/:userId" component=&#123;User&#125;/&gt;</div><div class="line">      &lt;/Route&gt;</div><div class="line">      &lt;Route path="*" component=&#123;NoMatch&#125;/&gt;</div><div class="line">    &lt;/Route&gt;</div><div class="line">  &lt;/Router&gt;</div><div class="line">), document.getElementById('root'))</div></pre></td></tr></table></figure>
-<p>See more in the <a href="/docs/Introduction.md">Introduction</a>, <a href="/docs/guides/README.md">Guides</a>, and <a href="/examples">Examples</a>.</p>
-<h3 id="Versioning-and-Stability"><a href="#Versioning-and-Stability" class="headerlink" title="Versioning and Stability"></a>Versioning and Stability</h3><p>We want React Router to be a stable dependency that’s easy to keep current. We take the same approach to versioning as React.js itself: <a href="https://facebook.github.io/react/blog/2016/02/19/new-versioning-scheme.html" target="_blank" rel="external">React Versioning Scheme</a>.</p>
-<h3 id="Thanks"><a href="#Thanks" class="headerlink" title="Thanks"></a>Thanks</h3><p>Thanks to <a href="/SPONSORS.md">our sponsors</a> for supporting the development of<br>React Router.</p>
-<p>React Router was initially inspired by Ember’s fantastic router. Many thanks to the Ember team.</p>
-<p>Also, thanks to <a href="https://www.browserstack.com/" target="_blank" rel="external">BrowserStack</a> for providing the infrastructure that allows us to run our build in real browsers.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://andyketter.github.io/2017/03/03/Redux/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="墨含">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/author.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="白马非白">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="白马非白" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/03/03/Redux/" itemprop="url">
-                  未命名
-                </a>
               
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-03T14:08:00+08:00">
-                2017-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
+            </span>
           
 
           
@@ -753,8 +414,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/03/Redux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/03/Redux/" itemprop="commentCount"></span>
+                <a href="/2017/02/24/Redux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/24/Redux/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -911,7 +572,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://andyketter.github.io/2017/03/03/React/">
+  <link itemprop="mainEntityOfPage" href="https://andyketter.github.io/2017/02/20/React-router/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="墨含">
@@ -936,8 +597,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/03/React/" itemprop="url">
-                  未命名
+                <a class="post-title-link" href="/2017/02/20/React-router/" itemprop="url">
+                  React-router
                 </a>
               
             
@@ -953,8 +614,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-03T14:07:16+08:00">
-                2017-03-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-20T13:21:25+08:00">
+                2017-02-20
               </time>
             
 
@@ -964,6 +625,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端路由/" itemprop="url" rel="index">
+                    <span itemprop="name">前端路由</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -972,8 +655,194 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/03/React/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/03/React/" itemprop="commentCount"></span>
+                <a href="/2017/02/20/React-router/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/React-router/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="React-Router"><a href="#React-Router" class="headerlink" title="React Router  "></a>React Router <a href="https://travis-ci.org/ReactTraining/react-router" target="_blank" rel="external"><img src="https://img.shields.io/travis/ReactTraining/react-router/master.svg?style=flat-square" alt="Travis"></a> <a href="https://www.npmjs.org/package/react-router" target="_blank" rel="external"><img src="https://img.shields.io/npm/v/react-router.svg?style=flat-square" alt="npm package"></a></h1><p><img src="/logo/vertical@2x.png" height="150"></p>
+<p>React Router is a complete routing library for <a href="https://facebook.github.io/react" target="_blank" rel="external">React</a>.</p>
+<p>React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy code loading, dynamic route matching, and location transition handling built right in. Make the URL your first thought, not an after-thought.</p>
+<p><a href="https://codecov.io/gh/ReactTraining/react-router" target="_blank" rel="external"><img src="https://img.shields.io/codecov/c/github/ReactTraining/react-router/master.svg?style=flat-square" alt="Codecov"></a><br><a href="https://discord.gg/0ZcbPKXt5bYaNQ46" target="_blank" rel="external"><img src="https://img.shields.io/badge/Discord-join%20chat%20%E2%86%92-738bd7.svg?style=flat-square" alt="Discord"></a></p>
+<h3 id="v4-Is-Coming"><a href="#v4-Is-Coming" class="headerlink" title="v4 Is Coming"></a>v4 Is Coming</h3><p>The next version of React Router (v4) is in beta now.</p>
+<p><a href="https://reacttraining.com/react-router/" target="_blank" rel="external">v4 Documentation</a></p>
+<h3 id="Docs-amp-Help"><a href="#Docs-amp-Help" class="headerlink" title="Docs &amp; Help"></a>Docs &amp; Help</h3><ul>
+<li><a href="https://github.com/reactjs/react-router-tutorial" target="_blank" rel="external">Tutorial – do this first!</a></li>
+<li><a href="/docs">Guides and API docs (v2, v3)</a></li>
+<li><a href="https://github.com/ReactTraining/react-router/blob/master/docs/Troubleshooting.md" target="_blank" rel="external">Troubleshooting guide</a></li>
+<li><a href="/CHANGES.md">Changelog</a></li>
+<li><a href="http://stackoverflow.com/questions/tagged/react-router" target="_blank" rel="external">Stack Overflow</a></li>
+<li><a href="http://codepen.io/anon/pen/xwQZdy?editors=001" target="_blank" rel="external">CodePen boilerplate</a> for bug reports</li>
+</ul>
+<p><strong>Older Versions:</strong></p>
+<ul>
+<li>0.13.x - <a href="https://github.com/ReactTraining/react-router/tree/v0.13.6/doc" target="_blank" rel="external">docs</a> / <a href="https://github.com/ReactTraining/react-router/tree/v0.13.6/docs/guides" target="_blank" rel="external">guides</a> / <a href="https://github.com/ReactTraining/react-router/tree/v0.13.6" target="_blank" rel="external">code</a> / <a href="/upgrade-guides/v1.0.0.md">upgrade guide</a></li>
+<li>1.0.x - <a href="https://github.com/ReactTraining/react-router/tree/1.0.x/docs" target="_blank" rel="external">docs</a> / <a href="https://github.com/ReactTraining/react-router/tree/1.0.x" target="_blank" rel="external">code</a> / <a href="/upgrade-guides/v2.0.0.md">upgrade guide</a></li>
+</ul>
+<p>For questions and support, please visit <a href="https://discord.gg/0ZcbPKXt5bYaNQ46" target="_blank" rel="external">our channel on Reactiflux</a> or <a href="http://stackoverflow.com/questions/tagged/react-router" target="_blank" rel="external">Stack Overflow</a>.</p>
+<h3 id="Browser-Support"><a href="#Browser-Support" class="headerlink" title="Browser Support"></a>Browser Support</h3><p>We support all browsers and environments where React runs.</p>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>Using <a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a>:</p>
+<pre><code>$ npm install --save react-router
+</code></pre><p>Then with a module bundler like <a href="https://webpack.github.io/" target="_blank" rel="external">webpack</a> that supports either CommonJS or ES2015 modules, use as you would anything else:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// using an ES6 transpiler, like babel</span></div><div class="line"><span class="keyword">import</span> &#123; Router, Route, Link &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></div><div class="line"></div><div class="line"><span class="comment">// not using an ES6 transpiler</span></div><div class="line"><span class="keyword">var</span> Router = <span class="built_in">require</span>(<span class="string">'react-router'</span>).Router</div><div class="line"><span class="keyword">var</span> Route = <span class="built_in">require</span>(<span class="string">'react-router'</span>).Route</div><div class="line"><span class="keyword">var</span> Link = <span class="built_in">require</span>(<span class="string">'react-router'</span>).Link</div></pre></td></tr></table></figure>
+<p>The UMD build is also available on <a href="https://unpkg.com" target="_blank" rel="external">unpkg</a>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/react-router/umd/ReactRouter.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>You can find the library on <code>window.ReactRouter</code>.</p>
+<h3 id="What’s-it-look-like"><a href="#What’s-it-look-like" class="headerlink" title="What’s it look like?"></a>What’s it look like?</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span></div><div class="line"><span class="keyword">import</span> &#123; Router, Route, Link, browserHistory &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> App = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;)</div><div class="line"><span class="keyword">const</span> About = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;)</div><div class="line"><span class="keyword">const</span> NoMatch = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;)</div><div class="line"></div><div class="line"><span class="keyword">const</span> Users = React.createClass(&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Users<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"master"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">            &#123;/* use Link to route around the app */&#125;</div><div class="line">            &#123;this.state.users.map(user =&gt; (</div><div class="line">              <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;user.id&#125;</span>&gt;</span><span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&#123;</span>`/<span class="attr">user</span>/$&#123;<span class="attr">user.id</span>&#125;`&#125;&gt;</span>&#123;user.name&#125;<span class="tag">&lt;/<span class="name">Link</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            ))&#125;</div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"detail"</span>&gt;</span></div><div class="line">          &#123;this.props.children&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">const</span> User = React.createClass(&#123;</div><div class="line">  componentDidMount() &#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">      <span class="comment">// route components are rendered with useful information, like URL params</span></div><div class="line">      user: findUserById(<span class="keyword">this</span>.props.params.userId)</div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;this.state.user.name&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">        &#123;/* etc. */&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// Declarative route configuration (could also load this config lazily</span></div><div class="line"><span class="comment">// instead, all you really need is a single root route, you don't need to</span></div><div class="line"><span class="comment">// colocate the entire config).</span></div><div class="line">render((</div><div class="line">  &lt;Router history=&#123;browserHistory&#125;&gt;</div><div class="line">    &lt;Route path="/" component=&#123;App&#125;&gt;</div><div class="line">      &lt;Route path="about" component=&#123;About&#125;/&gt;</div><div class="line">      &lt;Route path="users" component=&#123;Users&#125;&gt;</div><div class="line">        &lt;Route path="/user/:userId" component=&#123;User&#125;/&gt;</div><div class="line">      &lt;/Route&gt;</div><div class="line">      &lt;Route path="*" component=&#123;NoMatch&#125;/&gt;</div><div class="line">    &lt;/Route&gt;</div><div class="line">  &lt;/Router&gt;</div><div class="line">), document.getElementById('root'))</div></pre></td></tr></table></figure>
+<p>See more in the <a href="/docs/Introduction.md">Introduction</a>, <a href="/docs/guides/README.md">Guides</a>, and <a href="/examples">Examples</a>.</p>
+<h3 id="Versioning-and-Stability"><a href="#Versioning-and-Stability" class="headerlink" title="Versioning and Stability"></a>Versioning and Stability</h3><p>We want React Router to be a stable dependency that’s easy to keep current. We take the same approach to versioning as React.js itself: <a href="https://facebook.github.io/react/blog/2016/02/19/new-versioning-scheme.html" target="_blank" rel="external">React Versioning Scheme</a>.</p>
+<h3 id="Thanks"><a href="#Thanks" class="headerlink" title="Thanks"></a>Thanks</h3><p>Thanks to <a href="/SPONSORS.md">our sponsors</a> for supporting the development of<br>React Router.</p>
+<p>React Router was initially inspired by Ember’s fantastic router. Many thanks to the Ember team.</p>
+<p>Also, thanks to <a href="https://www.browserstack.com/" target="_blank" rel="external">BrowserStack</a> for providing the infrastructure that allows us to run our build in real browsers.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://andyketter.github.io/2017/02/20/React/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="墨含">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/author.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="白马非白">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="白马非白" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/20/React/" itemprop="url">
+                  React
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-20T13:21:25+08:00">
+                2017-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/20/React/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/React/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1028,6 +897,225 @@
 <p>React documentation is <a href="./LICENSE-docs">Creative Commons licensed</a>.</p>
 <p>Examples provided in this repository and in the documentation are <a href="./LICENSE-examples">separately licensed</a>.</p>
 <h2 id="Troubleshooting"><a href="#Troubleshooting" class="headerlink" title="Troubleshooting"></a>Troubleshooting</h2><p>See the <a href="https://github.com/facebook/react/wiki/Troubleshooting" target="_blank" rel="external">Troubleshooting Guide</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://andyketter.github.io/2017/02/19/React-router-redux/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="墨含">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/author.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="白马非白">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="白马非白" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/19/React-router-redux/" itemprop="url">
+                  React-router-redux
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-19T13:21:25+08:00">
+                2017-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端框架/" itemprop="url" rel="index">
+                    <span itemprop="name">前端框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/19/React-router-redux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/19/React-router-redux/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="react-router-redux"><a href="#react-router-redux" class="headerlink" title="react-router-redux"></a>react-router-redux</h1><p><a href="https://www.npmjs.com/package/react-router-redux" target="_blank" rel="external"><img src="https://img.shields.io/npm/v/react-router-redux.svg?style=flat-square" alt="npm version"></a> <a href="https://www.npmjs.com/package/react-router-redux" target="_blank" rel="external"><img src="https://img.shields.io/npm/dm/react-router-redux.svg?style=flat-square" alt="npm downloads"></a> <a href="https://travis-ci.org/reactjs/react-router-redux" target="_blank" rel="external"><img src="https://img.shields.io/travis/reactjs/react-router-redux/master.svg?style=flat-square" alt="build status"></a></p>
+<blockquote>
+<p><strong>Keep your router in sync with application state</strong> :sparkles:</p>
+</blockquote>
+<p><em>Formerly known as redux-simple-router</em></p>
+<p>You’re a smart person. You use <a href="https://github.com/reactjs/redux" target="_blank" rel="external">Redux</a> to manage your application state. You use <a href="https://github.com/reactjs/react-router" target="_blank" rel="external">React Router</a> to do routing. All is good.</p>
+<p>But the two libraries don’t coordinate. You want to do time travel with your application state, but React Router doesn’t navigate between pages when you replay actions. It controls an important part of application state: the URL.</p>
+<p>This library helps you keep that bit of state in sync with your Redux store. We keep a copy of the current location hidden in state. When you rewind your application state with a tool like <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="external">Redux DevTools</a>, that state change is propagated to React Router so it can adjust the component tree accordingly. You can jump around in state, rewinding, replaying, and resetting as much as you’d like, and this library will ensure the two stay in sync at all times.</p>
+<p><strong>This library is not <em>necessary</em> for using Redux together with React Router. You can use the two together just fine without any additional libraries. It is useful if you care about recording, persisting, and replaying user actions, using time travel. If you don’t care about these features, just <a href="http://stackoverflow.com/questions/36722584/how-to-sync-redux-state-and-url-hash-tag-params/36749963#36749963" target="_blank" rel="external">use Redux and React Router directly</a>.</strong></p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save react-router-redux</div></pre></td></tr></table></figure>
+<h2 id="How-It-Works"><a href="#How-It-Works" class="headerlink" title="How It Works"></a>How It Works</h2><p>This library allows you to use React Router’s APIs as they are documented. And, you can use redux like you normally would, with a single app state. The library simply enhances a history instance to allow it to synchronize any changes it receives into application state.</p>
+<p><a href="https://github.com/reactjs/history" target="_blank" rel="external">history</a> + <code>store</code> (<a href="https://github.com/reactjs/redux" target="_blank" rel="external">redux</a>) &rarr; <a href="https://github.com/reactjs/react-router-redux" target="_blank" rel="external"><strong>react-router-redux</strong></a> &rarr; enhanced <a href="https://github.com/reactjs/history" target="_blank" rel="external">history</a> &rarr; <a href="https://github.com/reactjs/react-router" target="_blank" rel="external">react-router</a></p>
+<h2 id="Tutorial"><a href="#Tutorial" class="headerlink" title="Tutorial"></a>Tutorial</h2><p>Let’s take a look at a simple example.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></div><div class="line"><span class="keyword">import</span> &#123; createStore, combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span></div><div class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></div><div class="line"><span class="keyword">import</span> &#123; Router, Route, browserHistory &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></div><div class="line"><span class="keyword">import</span> &#123; syncHistoryWithStore, routerReducer &#125; <span class="keyword">from</span> <span class="string">'react-router-redux'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> reducers <span class="keyword">from</span> <span class="string">'&lt;project-path&gt;/reducers'</span></div><div class="line"></div><div class="line"><span class="comment">// Add the reducer to your store on the `routing` key</span></div><div class="line"><span class="keyword">const</span> store = createStore(</div><div class="line">  combineReducers(&#123;</div><div class="line">    ...reducers,</div><div class="line">    <span class="attr">routing</span>: routerReducer</div><div class="line">  &#125;)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment">// Create an enhanced history that syncs navigation events with the store</span></div><div class="line"><span class="keyword">const</span> history = syncHistoryWithStore(browserHistory, store)</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">    &#123; /* Tell the Router to use our enhanced history */ &#125;</div><div class="line">    &lt;Router history=&#123;history&#125;&gt;</div><div class="line">      &lt;Route path="/" component=&#123;App&#125;&gt;</div><div class="line">        &lt;Route path="foo" component=&#123;Foo&#125;/&gt;</div><div class="line">        &lt;Route path="bar" component=&#123;Bar&#125;/&gt;</div><div class="line">      &lt;/Route&gt;</div><div class="line">    &lt;/Router&gt;</div><div class="line">  &lt;/Provider&gt;,</div><div class="line">  document.getElementById('mount')</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>Now any time you navigate, which can come from pressing browser buttons or navigating in your application code, the enhanced history will first pass the new location through the Redux store and then on to React Router to update the component tree. If you time travel, it will also pass the new state to React Router to update the component tree again.</p>
+<h4 id="How-do-I-watch-for-navigation-events-such-as-for-analytics"><a href="#How-do-I-watch-for-navigation-events-such-as-for-analytics" class="headerlink" title="How do I watch for navigation events, such as for analytics?"></a>How do I watch for navigation events, such as for analytics?</h4><p>Simply listen to the enhanced history via <code>history.listen</code>. This takes in a function that will receive a <code>location</code> any time the store updates. This includes any time travel activity performed on the store.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> history = syncHistoryWithStore(browserHistory, store)</div><div class="line"></div><div class="line">history.listen(<span class="function"><span class="params">location</span> =&gt;</span> analyticsService.track(location.pathname))</div></pre></td></tr></table></figure>
+<p>For other kinds of events in your system, you can use middleware on your Redux store like normal to watch any action that is dispatched to the store.</p>
+<h4 id="What-if-I-use-Immutable-js-or-another-state-wrapper-with-my-Redux-store"><a href="#What-if-I-use-Immutable-js-or-another-state-wrapper-with-my-Redux-store" class="headerlink" title="What if I use Immutable.js or another state wrapper with my Redux store?"></a>What if I use Immutable.js or another state wrapper with my Redux store?</h4><p>When using a wrapper for your store’s state, such as Immutable.js, you will need to change two things from the standard setup:</p>
+<ol>
+<li>By default, the library expects to find the history state at <code>state.routing</code>. If your wrapper prevents accessing properties directly, or you want to put the routing state elsewhere, pass a selector function to access the historystate via the <code>selectLocationState</code> option on <code>syncHistoryWithStore</code>.</li>
+<li>Provide your own reducer function that will receive actions of type <code>LOCATION_CHANGE</code> and return the payload merged into the <code>locationBeforeTransitions</code> property of the routing state. For example, <code>state.set(&quot;routing&quot;, {locationBeforeTransitions: action.payload})</code>.</li>
+</ol>
+<p>These two hooks will allow you to store the state that this library uses in whatever format or wrapper you would like.</p>
+<h4 id="How-do-I-access-router-state-in-a-container-component"><a href="#How-do-I-access-router-state-in-a-container-component" class="headerlink" title="How do I access router state in a container component?"></a>How do I access router state in a container component?</h4><p>React Router <a href="https://github.com/ReactTraining/react-router/blob/master/docs/Introduction.md#getting-url-parameters" target="_blank" rel="external">provides route information via a route component’s props</a>. This makes it easy to access them from a container component. When using <a href="https://github.com/reactjs/react-redux" target="_blank" rel="external">react-redux</a> to <code>connect()</code> your components to state, you can access the router’s props from the <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options" target="_blank" rel="external">2nd argument of <code>mapStateToProps</code></a>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state, ownProps</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">id</span>: ownProps.params.id,</div><div class="line">    <span class="attr">filter</span>: ownProps.location.query.filter</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>You should not read the location state directly from the Redux store. This is because React Router operates asynchronously (to handle things such as dynamically-loaded components) and your component tree may not yet be updated in sync with your Redux state. You should rely on the props passed by React Router, as they are only updated after it has processed all asynchronous code.</p>
+<h4 id="What-if-I-want-to-issue-navigation-events-via-Redux-actions"><a href="#What-if-I-want-to-issue-navigation-events-via-Redux-actions" class="headerlink" title="What if I want to issue navigation events via Redux actions?"></a>What if I want to issue navigation events via Redux actions?</h4><p>React Router provides singleton versions of history (<code>browserHistory</code> and <code>hashHistory</code>) that you can import and use from anywhere in your application. However, if you prefer Redux style actions, the library also provides a set of action creators and a middleware to capture them and redirect them to your history instance.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; createStore, combineReducers, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</div><div class="line"><span class="keyword">import</span> &#123; routerMiddleware, push &#125; <span class="keyword">from</span> <span class="string">'react-router-redux'</span></div><div class="line"></div><div class="line"><span class="comment">// Apply the middleware to the store</span></div><div class="line"><span class="keyword">const</span> middleware = routerMiddleware(browserHistory)</div><div class="line"><span class="keyword">const</span> store = createStore(</div><div class="line">  reducers,</div><div class="line">  applyMiddleware(middleware)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment">// Dispatch from anywhere like normal.</span></div><div class="line">store.dispatch(push(<span class="string">'/foo'</span>))</div></pre></td></tr></table></figure>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><ul>
+<li><a href="/examples/basic">examples/basic</a> - basic reference implementation</li>
+</ul>
+<p>Examples from the community:</p>
+<ul>
+<li><a href="https://github.com/shakacode/react-webpack-rails-tutorial" target="_blank" rel="external">shakacode/react-webpack-rails-tutorial</a> - react-router-redux including <strong>Server Rendering</strong> using <a href="https://github.com/shakacode/react_on_rails/" target="_blank" rel="external">React on Rails</a>, live at <a href="http://www.reactrails.com/" target="_blank" rel="external">www.reactrails.com</a>.</li>
+<li><a href="https://github.com/davezuko/react-redux-starter-kit" target="_blank" rel="external">davezuko/react-redux-starter-kit</a> - popular redux starter kit<ul>
+<li><strong>tip</strong>: migrating from react-router-redux <code>^3.0.0</code>? use <a href="https://github.com/davezuko/react-redux-starter-kit/commit/0df26907" target="_blank" rel="external">this commit</a> as a reference</li>
+</ul>
+</li>
+<li><a href="https://github.com/svrcekmichal/universal-react" target="_blank" rel="external">svrcekmichal/universal-react</a> - Universal react app with async actions provided by <a href="https://github.com/svrcekmichal/reasync" target="_blank" rel="external">svrcekmichal/reasync</a> package</li>
+<li><a href="https://github.com/StevenIseki/react-router-redux-example" target="_blank" rel="external">steveniseki/react-router-redux-example</a> - minimal react-router-redux example includes css modules and universal rendering</li>
+<li><a href="https://github.com/choonkending/react-webpack-node" target="_blank" rel="external">choonkending/react-webpack-node</a> - Full-stack universal Redux App</li>
+<li><a href="https://github.com/kuy/treemap-with-router" target="_blank" rel="external">kuy/treemap-with-router</a> - An example for react-router-redux with d3’s treemap.</li>
+</ul>
+<p>&rarr; <em>Have an example to add? Send us a PR!</em> &larr;</p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h4 id="routerReducer"><a href="#routerReducer" class="headerlink" title="routerReducer()"></a><code>routerReducer()</code></h4><p><strong>You must add this reducer to your store for syncing to work.</strong></p>
+<p>A reducer function that stores location updates from <code>history</code>. If you use <code>combineReducers</code>, it should be nested under the <code>routing</code> key.</p>
+<h4 id="history-syncHistoryWithStore-history-store-options"><a href="#history-syncHistoryWithStore-history-store-options" class="headerlink" title="history = syncHistoryWithStore(history, store, [options])"></a><code>history = syncHistoryWithStore(history, store, [options])</code></h4><p>Creates an enhanced history from the provided history. This history changes <code>history.listen</code> to pass all location updates through the provided store first. This ensures if the store is updated either from a navigation event or from a time travel action, such as a replay, the listeners of the enhanced history will stay in sync.</p>
+<p><strong>You must provide the enhanced history to your <code>&lt;Router&gt;</code> component.</strong> This ensures your routes stay in sync with your location and your store at the same time.</p>
+<p>The <code>options</code> object takes in the following optional keys:</p>
+<ul>
+<li><code>selectLocationState</code> - (default <code>state =&gt; state.routing</code>) A selector function to obtain the history state from your store. Useful when not using the provided <code>routerReducer</code> to store history state. Allows you to use wrappers, such as Immutable.js.</li>
+<li><code>adjustUrlOnReplay</code> - (default <code>true</code>) When <code>false</code>, the URL will not be kept in sync during time travel. This is useful when using <code>persistState</code> from Redux DevTools and not wanting to maintain the URL state when restoring state.</li>
+</ul>
+<h4 id="push-location-replace-location-go-number-goBack-goForward"><a href="#push-location-replace-location-go-number-goBack-goForward" class="headerlink" title="push(location), replace(location), go(number), goBack(), goForward()"></a><code>push(location)</code>, <code>replace(location)</code>, <code>go(number)</code>, <code>goBack()</code>, <code>goForward()</code></h4><p><strong>You must install <code>routerMiddleware</code> for these action creators to work.</strong></p>
+<p>Action creators that correspond with the [history methods of the same name]<br>(<a href="https://github.com/mjackson/history/blob/master/README.md#navigation" target="_blank" rel="external">https://github.com/mjackson/history/blob/master/README.md#navigation</a>). For reference they are defined as follows:</p>
+<ul>
+<li><code>push</code> - Pushes a new location to history, becoming the current location.</li>
+<li><code>replace</code> - Replaces the current location in history.</li>
+<li><code>go</code> - Moves backwards or forwards a relative number of locations in history.</li>
+<li><code>goForward</code> - Moves forward one location. Equivalent to <code>go(1)</code></li>
+<li><code>goBack</code> - Moves backwards one location. Equivalent to <code>go(-1)</code></li>
+</ul>
+<p>Both <code>push</code> and <code>replace</code> take in a <a href="https://github.com/ReactTraining/history/blob/v2/docs/Glossary.md#locationdescriptor" target="_blank" rel="external">location descriptor</a>, which can be an object describing the URL or a plain string URL.</p>
+<p>These action creators are also available in one single object as <code>routerActions</code>, which can be used as a convenience when using Redux’s <code>bindActionCreators()</code>.</p>
+<h4 id="routerMiddleware-history"><a href="#routerMiddleware-history" class="headerlink" title="routerMiddleware(history)"></a><code>routerMiddleware(history)</code></h4><p>A middleware you can apply to your Redux <code>store</code> to capture dispatched actions created by the action creators. It will redirect those actions to the provided <code>history</code> instance.</p>
+<h4 id="LOCATION-CHANGE"><a href="#LOCATION-CHANGE" class="headerlink" title="LOCATION_CHANGE"></a><code>LOCATION_CHANGE</code></h4><p>An action type that you can listen for in your reducers to be notified of route updates. Fires <em>after</em> any changes to history.</p>
 
           
         
@@ -1578,7 +1666,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1587,7 +1675,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
