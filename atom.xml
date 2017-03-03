@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://andyketter.github.io/"/>
-  <updated>2017-03-03T06:17:41.000Z</updated>
+  <updated>2017-03-03T06:19:54.000Z</updated>
   <id>https://andyketter.github.io/</id>
   
   <author>
@@ -20,11 +20,27 @@
     <link href="https://andyketter.github.io/2017/02/24/Redux/"/>
     <id>https://andyketter.github.io/2017/02/24/Redux/</id>
     <published>2017-02-24T05:21:25.000Z</published>
-    <updated>2017-03-03T06:17:41.000Z</updated>
+    <updated>2017-03-03T06:19:54.000Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://redux.js.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;https://camo.gi
+      &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;a href=&#39;http://redux.js.org&#39;&gt;&lt;img src=&#39;https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67&#39; height=&#39;60&#39;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Redux is a predictable state container for JavaScript apps.&lt;br&gt;(If you’re looking for a WordPress framework, check out &lt;a href=&quot;https://reduxframework.com/&quot;&gt;Redux Framework&lt;/a&gt;.)&lt;/p&gt;
+&lt;p&gt;It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as &lt;a href=&quot;https://github.com/gaearon/redux-devtools&quot;&gt;live code editing combined with a time traveling debugger&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can use Redux together with &lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;React&lt;/a&gt;, or with any other view library.&lt;br&gt;It is tiny (2kB, including dependencies).&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://travis-ci.org/reactjs/redux&quot;&gt;&lt;img src=&quot;https://img.shields.io/travis/reactjs/redux/master.svg?style=flat-square&quot; alt=&quot;build status&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.npmjs.com/package/redux&quot;&gt;&lt;img src=&quot;https://img.shields.io/npm/v/redux.svg?style=flat-square&quot; alt=&quot;npm version&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.npmjs.com/package/redux&quot;&gt;&lt;img src=&quot;https://img.shields.io/npm/dm/redux.svg?style=flat-square&quot; alt=&quot;npm downloads&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://discord.gg/0ZcbPKXt5bZ6au5t&quot;&gt;&lt;img src=&quot;https://img.shields.io/badge/discord-%23redux%20%40%20reactiflux-61dafb.svg?style=flat-square&quot; alt=&quot;redux channel on discord&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://webchat.freenode.net/&quot;&gt;&lt;img src=&quot;https://img.shields.io/badge/irc-%23rackt%20%40%20freenode-61DAFB.svg?style=flat-square&quot; alt=&quot;#rackt on freenode&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://changelog.com/187&quot;&gt;&lt;img src=&quot;https://img.shields.io/badge/changelog-%23187-lightgrey.svg?style=flat-square&quot; alt=&quot;Changelog #187&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Learn Redux from its creator:&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;&lt;a href=&quot;https://egghead.io/series/getting-started-with-redux&quot;&gt;Part 1: Getting Started with Redux&lt;/a&gt; (30 free videos)&lt;/strong&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;&lt;a href=&quot;https://egghead.io/courses/building-react-applications-with-idiomatic-redux&quot;&gt;Part 2: Building React Applications with Idiomatic Redux&lt;/a&gt; (27 free videos)&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Testimonials&quot;&gt;&lt;a href=&quot;#Testimonials&quot; class=&quot;headerlink&quot; title=&quot;Testimonials&quot;&gt;&lt;/a&gt;Testimonials&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/jingc/status/616608251463909376&quot;&gt;“Love what you’re doing with Redux”&lt;/a&gt;&lt;br&gt;Jing Chen, creator of Flux&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/fisherwebdev/status/616286955693682688&quot;&gt;“I asked for comments on Redux in FB’s internal JS discussion group, and it was universally praised. Really awesome work.”&lt;/a&gt;&lt;br&gt;Bill Fisher, author of Flux documentation&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/andrestaltz/status/616271392930201604&quot;&gt;“It’s cool that you are inventing a better Flux by not doing Flux at all.”&lt;/a&gt;&lt;br&gt;André Staltz, creator of Cycle&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Before-Proceeding-Further&quot;&gt;&lt;a href=&quot;#Before-Proceeding-Further&quot; class=&quot;headerlink&quot; title=&quot;Before Proceeding Further&quot;&gt;&lt;/a&gt;Before Proceeding Further&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Also read:&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;&lt;a href=&quot;https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367&quot;&gt;You Might Not Need Redux&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Developer-Experience&quot;&gt;&lt;a href=&quot;#Developer-Experience&quot; class=&quot;headerlink&quot; title=&quot;Developer Experience&quot;&gt;&lt;/a&gt;Developer Experience&lt;/h3&gt;&lt;p&gt;I wrote Redux while working on my React Europe talk called &lt;a href=&quot;https://www.youtube.com/watch?v=xsSnOQynTHs&quot;&gt;“Hot Reloading with Time Travel”&lt;/a&gt;. My goal was to create a state management library with minimal API but completely predictable behavior, so it is possible to implement logging, hot reloading, time travel, universal apps, record and replay, without any buy-in from the developer.&lt;/p&gt;
+&lt;h3 id=&quot;Influences&quot;&gt;&lt;a href=&quot;#Influences&quot; class=&quot;headerlink&quot; title=&quot;Influences&quot;&gt;&lt;/a&gt;Influences&lt;/h3&gt;&lt;p&gt;Redux evolves the ideas of &lt;a href=&quot;http://facebook.github.io/flux/&quot;&gt;Flux&lt;/a&gt;, but avoids its complexity by taking cues from &lt;a href=&quot;https://github.com/evancz/elm-architecture-tutorial/&quot;&gt;Elm&lt;/a&gt;.&lt;br&gt;Whether you have used them or not, Redux only takes a few minutes to get started with.&lt;/p&gt;
     
     </summary>
     
@@ -40,11 +56,30 @@
     <link href="https://andyketter.github.io/2017/02/20/React-router/"/>
     <id>https://andyketter.github.io/2017/02/20/React-router/</id>
     <published>2017-02-20T05:21:25.000Z</published>
-    <updated>2017-03-03T06:16:34.000Z</updated>
+    <updated>2017-03-03T06:20:52.146Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;React-Router&quot;&gt;&lt;a href=&quot;#React-Router&quot; class=&quot;headerlink&quot; title=&quot;React Router  &quot;&gt;&lt;/a&gt;React Router &lt;a href=&quot;https://travis-ci.org/Reac
+      &lt;h1 id=&quot;React-Router&quot;&gt;&lt;a href=&quot;#React-Router&quot; class=&quot;headerlink&quot; title=&quot;React Router  &quot;&gt;&lt;/a&gt;React Router &lt;a href=&quot;https://travis-ci.org/ReactTraining/react-router&quot;&gt;&lt;img src=&quot;https://img.shields.io/travis/ReactTraining/react-router/master.svg?style=flat-square&quot; alt=&quot;Travis&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://www.npmjs.org/package/react-router&quot;&gt;&lt;img src=&quot;https://img.shields.io/npm/v/react-router.svg?style=flat-square&quot; alt=&quot;npm package&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;React Router is a complete routing library for &lt;a href=&quot;https://facebook.github.io/react&quot;&gt;React&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy code loading, dynamic route matching, and location transition handling built right in. Make the URL your first thought, not an after-thought.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://codecov.io/gh/ReactTraining/react-router&quot;&gt;&lt;img src=&quot;https://img.shields.io/codecov/c/github/ReactTraining/react-router/master.svg?style=flat-square&quot; alt=&quot;Codecov&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://discord.gg/0ZcbPKXt5bYaNQ46&quot;&gt;&lt;img src=&quot;https://img.shields.io/badge/Discord-join%20chat%20%E2%86%92-738bd7.svg?style=flat-square&quot; alt=&quot;Discord&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;v4-Is-Coming&quot;&gt;&lt;a href=&quot;#v4-Is-Coming&quot; class=&quot;headerlink&quot; title=&quot;v4 Is Coming&quot;&gt;&lt;/a&gt;v4 Is Coming&lt;/h3&gt;&lt;p&gt;The next version of React Router (v4) is in beta now.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://reacttraining.com/react-router/&quot;&gt;v4 Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Docs-amp-Help&quot;&gt;&lt;a href=&quot;#Docs-amp-Help&quot; class=&quot;headerlink&quot; title=&quot;Docs &amp;amp; Help&quot;&gt;&lt;/a&gt;Docs &amp;amp; Help&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/reactjs/react-router-tutorial&quot;&gt;Tutorial – do this first!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/docs&quot;&gt;Guides and API docs (v2, v3)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/ReactTraining/react-router/blob/master/docs/Troubleshooting.md&quot;&gt;Troubleshooting guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/CHANGES.md&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/tagged/react-router&quot;&gt;Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://codepen.io/anon/pen/xwQZdy?editors=001&quot;&gt;CodePen boilerplate&lt;/a&gt; for bug reports&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Older Versions:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0.13.x - &lt;a href=&quot;https://github.com/ReactTraining/react-router/tree/v0.13.6/doc&quot;&gt;docs&lt;/a&gt; / &lt;a href=&quot;https://github.com/ReactTraining/react-router/tree/v0.13.6/docs/guides&quot;&gt;guides&lt;/a&gt; / &lt;a href=&quot;https://github.com/ReactTraining/react-router/tree/v0.13.6&quot;&gt;code&lt;/a&gt; / &lt;a href=&quot;/upgrade-guides/v1.0.0.md&quot;&gt;upgrade guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;1.0.x - &lt;a href=&quot;https://github.com/ReactTraining/react-router/tree/1.0.x/docs&quot;&gt;docs&lt;/a&gt; / &lt;a href=&quot;https://github.com/ReactTraining/react-router/tree/1.0.x&quot;&gt;code&lt;/a&gt; / &lt;a href=&quot;/upgrade-guides/v2.0.0.md&quot;&gt;upgrade guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For questions and support, please visit &lt;a href=&quot;https://discord.gg/0ZcbPKXt5bYaNQ46&quot;&gt;our channel on Reactiflux&lt;/a&gt; or &lt;a href=&quot;http://stackoverflow.com/questions/tagged/react-router&quot;&gt;Stack Overflow&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;Browser-Support&quot;&gt;&lt;a href=&quot;#Browser-Support&quot; class=&quot;headerlink&quot; title=&quot;Browser Support&quot;&gt;&lt;/a&gt;Browser Support&lt;/h3&gt;
     
     </summary>
     
@@ -60,11 +95,21 @@
     <link href="https://andyketter.github.io/2017/02/20/React/"/>
     <id>https://andyketter.github.io/2017/02/20/React/</id>
     <published>2017-02-20T05:21:25.000Z</published>
-    <updated>2017-03-03T06:17:02.620Z</updated>
+    <updated>2017-03-03T06:21:27.000Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;React-middot&quot;&gt;&lt;a href=&quot;#React-middot&quot; class=&quot;headerlink&quot; title=&quot;React &amp;middot;     &quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://facebook.github.io/react/&quot;
+      &lt;h1 id=&quot;React-middot&quot;&gt;&lt;a href=&quot;#React-middot&quot; class=&quot;headerlink&quot; title=&quot;React &amp;middot;     &quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;React&lt;/a&gt; &amp;middot; &lt;a href=&quot;https://circleci.com/gh/facebook/react&quot;&gt;&lt;img src=&quot;https://circleci.com/gh/facebook/react.svg?style=shield&amp;amp;circle-token=:circle-token&quot; alt=&quot;CircleCI Status&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://travis-ci.org/facebook/react&quot;&gt;&lt;img src=&quot;https://img.shields.io/travis/facebook/react/master.svg?style=flat&quot; alt=&quot;Build Status&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://coveralls.io/github/facebook/react?branch=master&quot;&gt;&lt;img src=&quot;https://img.shields.io/coveralls/facebook/react/master.svg?style=flat&quot; alt=&quot;Coverage Status&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://www.npmjs.com/package/react&quot;&gt;&lt;img src=&quot;https://img.shields.io/npm/v/react.svg?style=flat&quot; alt=&quot;npm version&quot;&gt;&lt;/a&gt; &lt;a href=&quot;CONTRIBUTING.md#pull-requests&quot;&gt;&lt;img src=&quot;https://img.shields.io/badge/PRs-welcome-brightgreen.svg&quot; alt=&quot;PRs Welcome&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;React is a JavaScript library for building user interfaces.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Declarative:&lt;/strong&gt; React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable, simpler to understand, and easier to debug.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Component-Based:&lt;/strong&gt; Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Learn Once, Write Anywhere:&lt;/strong&gt; We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps using &lt;a href=&quot;https://facebook.github.io/react-native/&quot;&gt;React Native&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react/docs/getting-started.html&quot;&gt;Learn how to use React in your own project&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Examples&quot;&gt;&lt;a href=&quot;#Examples&quot; class=&quot;headerlink&quot; title=&quot;Examples&quot;&gt;&lt;/a&gt;Examples&lt;/h2&gt;&lt;p&gt;We have several examples &lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;on the website&lt;/a&gt;. Here is the first one to get you started:&lt;/p&gt;
+&lt;figure class=&quot;highlight jsx&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;HelloMessage&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;React&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;Component&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  render() &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;Hello &amp;#123;this.props.name&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;ReactDOM.render(&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;HelloMessage&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;John&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  document.getElementById(&#39;container&#39;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;This example will render “Hello John” into a container on the page.&lt;/p&gt;
+&lt;p&gt;You’ll notice that we used an HTML-like syntax; &lt;a href=&quot;https://facebook.github.io/react/docs/introducing-jsx.html&quot;&gt;we call it JSX&lt;/a&gt;. JSX is not required to use React, but it makes code more readable, and writing it feels like writing HTML. We recommend using &lt;a href=&quot;https://babeljs.io/&quot;&gt;Babel&lt;/a&gt; with a &lt;a href=&quot;https://babeljs.io/docs/plugins/preset-react/&quot;&gt;React preset&lt;/a&gt; to convert JSX into native JavaScript for browsers to digest.&lt;/p&gt;
     
     </summary>
     
@@ -80,11 +125,22 @@
     <link href="https://andyketter.github.io/2017/02/19/React-router-redux/"/>
     <id>https://andyketter.github.io/2017/02/19/React-router-redux/</id>
     <published>2017-02-19T05:21:25.000Z</published>
-    <updated>2017-03-03T06:15:53.000Z</updated>
+    <updated>2017-03-03T06:22:03.000Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;react-router-redux&quot;&gt;&lt;a href=&quot;#react-router-redux&quot; class=&quot;headerlink&quot; title=&quot;react-router-redux&quot;&gt;&lt;/a&gt;react-router-redux&lt;/h1&gt;&lt;p&gt;&lt;a hre
+      &lt;h1 id=&quot;react-router-redux&quot;&gt;&lt;a href=&quot;#react-router-redux&quot; class=&quot;headerlink&quot; title=&quot;react-router-redux&quot;&gt;&lt;/a&gt;react-router-redux&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.npmjs.com/package/react-router-redux&quot;&gt;&lt;img src=&quot;https://img.shields.io/npm/v/react-router-redux.svg?style=flat-square&quot; alt=&quot;npm version&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://www.npmjs.com/package/react-router-redux&quot;&gt;&lt;img src=&quot;https://img.shields.io/npm/dm/react-router-redux.svg?style=flat-square&quot; alt=&quot;npm downloads&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://travis-ci.org/reactjs/react-router-redux&quot;&gt;&lt;img src=&quot;https://img.shields.io/travis/reactjs/react-router-redux/master.svg?style=flat-square&quot; alt=&quot;build status&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Keep your router in sync with application state&lt;/strong&gt; :sparkles:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;Formerly known as redux-simple-router&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;You’re a smart person. You use &lt;a href=&quot;https://github.com/reactjs/redux&quot;&gt;Redux&lt;/a&gt; to manage your application state. You use &lt;a href=&quot;https://github.com/reactjs/react-router&quot;&gt;React Router&lt;/a&gt; to do routing. All is good.&lt;/p&gt;
+&lt;p&gt;But the two libraries don’t coordinate. You want to do time travel with your application state, but React Router doesn’t navigate between pages when you replay actions. It controls an important part of application state: the URL.&lt;/p&gt;
+&lt;p&gt;This library helps you keep that bit of state in sync with your Redux store. We keep a copy of the current location hidden in state. When you rewind your application state with a tool like &lt;a href=&quot;https://github.com/gaearon/redux-devtools&quot;&gt;Redux DevTools&lt;/a&gt;, that state change is propagated to React Router so it can adjust the component tree accordingly. You can jump around in state, rewinding, replaying, and resetting as much as you’d like, and this library will ensure the two stay in sync at all times.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This library is not &lt;em&gt;necessary&lt;/em&gt; for using Redux together with React Router. You can use the two together just fine without any additional libraries. It is useful if you care about recording, persisting, and replaying user actions, using time travel. If you don’t care about these features, just &lt;a href=&quot;http://stackoverflow.com/questions/36722584/how-to-sync-redux-state-and-url-hash-tag-params/36749963#36749963&quot;&gt;use Redux and React Router directly&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Installation&quot;&gt;&lt;a href=&quot;#Installation&quot; class=&quot;headerlink&quot; title=&quot;Installation&quot;&gt;&lt;/a&gt;Installation&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install --save react-router-redux&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;How-It-Works&quot;&gt;&lt;a href=&quot;#How-It-Works&quot; class=&quot;headerlink&quot; title=&quot;How It Works&quot;&gt;&lt;/a&gt;How It Works&lt;/h2&gt;&lt;p&gt;This library allows you to use React Router’s APIs as they are documented. And, you can use redux like you normally would, with a single app state. The library simply enhances a history instance to allow it to synchronize any changes it receives into application state.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/reactjs/history&quot;&gt;history&lt;/a&gt; + &lt;code&gt;store&lt;/code&gt; (&lt;a href=&quot;https://github.com/reactjs/redux&quot;&gt;redux&lt;/a&gt;) &amp;rarr; &lt;a href=&quot;https://github.com/reactjs/react-router-redux&quot;&gt;&lt;strong&gt;react-router-redux&lt;/strong&gt;&lt;/a&gt; &amp;rarr; enhanced &lt;a href=&quot;https://github.com/reactjs/history&quot;&gt;history&lt;/a&gt; &amp;rarr; &lt;a href=&quot;https://github.com/reactjs/react-router&quot;&gt;react-router&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
