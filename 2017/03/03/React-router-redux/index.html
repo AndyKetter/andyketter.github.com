@@ -1,0 +1,1103 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="白马非白" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="react-router-redux  
+
+Keep your router in sync with application state :sparkles:
+
+Formerly known as redux-simple-router
+You’re a smart person. You use Redux to manage your application state. You use R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="白马非白">
+<meta property="og:url" content="https://andyketter.github.io/2017/03/03/React-router-redux/index.html">
+<meta property="og:site_name" content="白马非白">
+<meta property="og:description" content="react-router-redux  
+
+Keep your router in sync with application state :sparkles:
+
+Formerly known as redux-simple-router
+You’re a smart person. You use Redux to manage your application state. You use R">
+<meta property="og:image" content="https://img.shields.io/npm/v/react-router-redux.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/npm/dm/react-router-redux.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/travis/reactjs/react-router-redux/master.svg?style=flat-square">
+<meta property="og:updated_time" content="2017-03-03T06:11:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="白马非白">
+<meta name="twitter:description" content="react-router-redux  
+
+Keep your router in sync with application state :sparkles:
+
+Formerly known as redux-simple-router
+You’re a smart person. You use Redux to manage your application state. You use R">
+<meta name="twitter:image" content="https://img.shields.io/npm/v/react-router-redux.svg?style=flat-square">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '墨含'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://andyketter.github.io/2017/03/03/React-router-redux/"/>
+
+
+
+
+
+  <title>  | 白马非白 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">白马非白</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">心若没有栖息 到哪都是流浪</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-artascope">
+          <a href="http://www.xiaoxii.com/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            小溪
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://andyketter.github.io/2017/03/03/React-router-redux/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="墨含">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/author.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="白马非白">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="白马非白" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-03T14:11:23+08:00">
+                2017-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/03/React-router-redux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/03/React-router-redux/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="react-router-redux"><a href="#react-router-redux" class="headerlink" title="react-router-redux"></a>react-router-redux</h1><p><a href="https://www.npmjs.com/package/react-router-redux" target="_blank" rel="external"><img src="https://img.shields.io/npm/v/react-router-redux.svg?style=flat-square" alt="npm version"></a> <a href="https://www.npmjs.com/package/react-router-redux" target="_blank" rel="external"><img src="https://img.shields.io/npm/dm/react-router-redux.svg?style=flat-square" alt="npm downloads"></a> <a href="https://travis-ci.org/reactjs/react-router-redux" target="_blank" rel="external"><img src="https://img.shields.io/travis/reactjs/react-router-redux/master.svg?style=flat-square" alt="build status"></a></p>
+<blockquote>
+<p><strong>Keep your router in sync with application state</strong> :sparkles:</p>
+</blockquote>
+<p><em>Formerly known as redux-simple-router</em></p>
+<p>You’re a smart person. You use <a href="https://github.com/reactjs/redux" target="_blank" rel="external">Redux</a> to manage your application state. You use <a href="https://github.com/reactjs/react-router" target="_blank" rel="external">React Router</a> to do routing. All is good.</p>
+<p>But the two libraries don’t coordinate. You want to do time travel with your application state, but React Router doesn’t navigate between pages when you replay actions. It controls an important part of application state: the URL.</p>
+<p>This library helps you keep that bit of state in sync with your Redux store. We keep a copy of the current location hidden in state. When you rewind your application state with a tool like <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="external">Redux DevTools</a>, that state change is propagated to React Router so it can adjust the component tree accordingly. You can jump around in state, rewinding, replaying, and resetting as much as you’d like, and this library will ensure the two stay in sync at all times.</p>
+<p><strong>This library is not <em>necessary</em> for using Redux together with React Router. You can use the two together just fine without any additional libraries. It is useful if you care about recording, persisting, and replaying user actions, using time travel. If you don’t care about these features, just <a href="http://stackoverflow.com/questions/36722584/how-to-sync-redux-state-and-url-hash-tag-params/36749963#36749963" target="_blank" rel="external">use Redux and React Router directly</a>.</strong></p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save react-router-redux</div></pre></td></tr></table></figure>
+<h2 id="How-It-Works"><a href="#How-It-Works" class="headerlink" title="How It Works"></a>How It Works</h2><p>This library allows you to use React Router’s APIs as they are documented. And, you can use redux like you normally would, with a single app state. The library simply enhances a history instance to allow it to synchronize any changes it receives into application state.</p>
+<p><a href="https://github.com/reactjs/history" target="_blank" rel="external">history</a> + <code>store</code> (<a href="https://github.com/reactjs/redux" target="_blank" rel="external">redux</a>) &rarr; <a href="https://github.com/reactjs/react-router-redux" target="_blank" rel="external"><strong>react-router-redux</strong></a> &rarr; enhanced <a href="https://github.com/reactjs/history" target="_blank" rel="external">history</a> &rarr; <a href="https://github.com/reactjs/react-router" target="_blank" rel="external">react-router</a></p>
+<h2 id="Tutorial"><a href="#Tutorial" class="headerlink" title="Tutorial"></a>Tutorial</h2><p>Let’s take a look at a simple example.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></div><div class="line"><span class="keyword">import</span> &#123; createStore, combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span></div><div class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></div><div class="line"><span class="keyword">import</span> &#123; Router, Route, browserHistory &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></div><div class="line"><span class="keyword">import</span> &#123; syncHistoryWithStore, routerReducer &#125; <span class="keyword">from</span> <span class="string">'react-router-redux'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> reducers <span class="keyword">from</span> <span class="string">'&lt;project-path&gt;/reducers'</span></div><div class="line"></div><div class="line"><span class="comment">// Add the reducer to your store on the `routing` key</span></div><div class="line"><span class="keyword">const</span> store = createStore(</div><div class="line">  combineReducers(&#123;</div><div class="line">    ...reducers,</div><div class="line">    <span class="attr">routing</span>: routerReducer</div><div class="line">  &#125;)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment">// Create an enhanced history that syncs navigation events with the store</span></div><div class="line"><span class="keyword">const</span> history = syncHistoryWithStore(browserHistory, store)</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">    &#123; /* Tell the Router to use our enhanced history */ &#125;</div><div class="line">    &lt;Router history=&#123;history&#125;&gt;</div><div class="line">      &lt;Route path="/" component=&#123;App&#125;&gt;</div><div class="line">        &lt;Route path="foo" component=&#123;Foo&#125;/&gt;</div><div class="line">        &lt;Route path="bar" component=&#123;Bar&#125;/&gt;</div><div class="line">      &lt;/Route&gt;</div><div class="line">    &lt;/Router&gt;</div><div class="line">  &lt;/Provider&gt;,</div><div class="line">  document.getElementById('mount')</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>Now any time you navigate, which can come from pressing browser buttons or navigating in your application code, the enhanced history will first pass the new location through the Redux store and then on to React Router to update the component tree. If you time travel, it will also pass the new state to React Router to update the component tree again.</p>
+<h4 id="How-do-I-watch-for-navigation-events-such-as-for-analytics"><a href="#How-do-I-watch-for-navigation-events-such-as-for-analytics" class="headerlink" title="How do I watch for navigation events, such as for analytics?"></a>How do I watch for navigation events, such as for analytics?</h4><p>Simply listen to the enhanced history via <code>history.listen</code>. This takes in a function that will receive a <code>location</code> any time the store updates. This includes any time travel activity performed on the store.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> history = syncHistoryWithStore(browserHistory, store)</div><div class="line"></div><div class="line">history.listen(<span class="function"><span class="params">location</span> =&gt;</span> analyticsService.track(location.pathname))</div></pre></td></tr></table></figure>
+<p>For other kinds of events in your system, you can use middleware on your Redux store like normal to watch any action that is dispatched to the store.</p>
+<h4 id="What-if-I-use-Immutable-js-or-another-state-wrapper-with-my-Redux-store"><a href="#What-if-I-use-Immutable-js-or-another-state-wrapper-with-my-Redux-store" class="headerlink" title="What if I use Immutable.js or another state wrapper with my Redux store?"></a>What if I use Immutable.js or another state wrapper with my Redux store?</h4><p>When using a wrapper for your store’s state, such as Immutable.js, you will need to change two things from the standard setup:</p>
+<ol>
+<li>By default, the library expects to find the history state at <code>state.routing</code>. If your wrapper prevents accessing properties directly, or you want to put the routing state elsewhere, pass a selector function to access the historystate via the <code>selectLocationState</code> option on <code>syncHistoryWithStore</code>.</li>
+<li>Provide your own reducer function that will receive actions of type <code>LOCATION_CHANGE</code> and return the payload merged into the <code>locationBeforeTransitions</code> property of the routing state. For example, <code>state.set(&quot;routing&quot;, {locationBeforeTransitions: action.payload})</code>.</li>
+</ol>
+<p>These two hooks will allow you to store the state that this library uses in whatever format or wrapper you would like.</p>
+<h4 id="How-do-I-access-router-state-in-a-container-component"><a href="#How-do-I-access-router-state-in-a-container-component" class="headerlink" title="How do I access router state in a container component?"></a>How do I access router state in a container component?</h4><p>React Router <a href="https://github.com/ReactTraining/react-router/blob/master/docs/Introduction.md#getting-url-parameters" target="_blank" rel="external">provides route information via a route component’s props</a>. This makes it easy to access them from a container component. When using <a href="https://github.com/reactjs/react-redux" target="_blank" rel="external">react-redux</a> to <code>connect()</code> your components to state, you can access the router’s props from the <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options" target="_blank" rel="external">2nd argument of <code>mapStateToProps</code></a>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state, ownProps</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">id</span>: ownProps.params.id,</div><div class="line">    <span class="attr">filter</span>: ownProps.location.query.filter</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>You should not read the location state directly from the Redux store. This is because React Router operates asynchronously (to handle things such as dynamically-loaded components) and your component tree may not yet be updated in sync with your Redux state. You should rely on the props passed by React Router, as they are only updated after it has processed all asynchronous code.</p>
+<h4 id="What-if-I-want-to-issue-navigation-events-via-Redux-actions"><a href="#What-if-I-want-to-issue-navigation-events-via-Redux-actions" class="headerlink" title="What if I want to issue navigation events via Redux actions?"></a>What if I want to issue navigation events via Redux actions?</h4><p>React Router provides singleton versions of history (<code>browserHistory</code> and <code>hashHistory</code>) that you can import and use from anywhere in your application. However, if you prefer Redux style actions, the library also provides a set of action creators and a middleware to capture them and redirect them to your history instance.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; createStore, combineReducers, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</div><div class="line"><span class="keyword">import</span> &#123; routerMiddleware, push &#125; <span class="keyword">from</span> <span class="string">'react-router-redux'</span></div><div class="line"></div><div class="line"><span class="comment">// Apply the middleware to the store</span></div><div class="line"><span class="keyword">const</span> middleware = routerMiddleware(browserHistory)</div><div class="line"><span class="keyword">const</span> store = createStore(</div><div class="line">  reducers,</div><div class="line">  applyMiddleware(middleware)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment">// Dispatch from anywhere like normal.</span></div><div class="line">store.dispatch(push(<span class="string">'/foo'</span>))</div></pre></td></tr></table></figure>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><ul>
+<li><a href="/examples/basic">examples/basic</a> - basic reference implementation</li>
+</ul>
+<p>Examples from the community:</p>
+<ul>
+<li><a href="https://github.com/shakacode/react-webpack-rails-tutorial" target="_blank" rel="external">shakacode/react-webpack-rails-tutorial</a> - react-router-redux including <strong>Server Rendering</strong> using <a href="https://github.com/shakacode/react_on_rails/" target="_blank" rel="external">React on Rails</a>, live at <a href="http://www.reactrails.com/" target="_blank" rel="external">www.reactrails.com</a>.</li>
+<li><a href="https://github.com/davezuko/react-redux-starter-kit" target="_blank" rel="external">davezuko/react-redux-starter-kit</a> - popular redux starter kit<ul>
+<li><strong>tip</strong>: migrating from react-router-redux <code>^3.0.0</code>? use <a href="https://github.com/davezuko/react-redux-starter-kit/commit/0df26907" target="_blank" rel="external">this commit</a> as a reference</li>
+</ul>
+</li>
+<li><a href="https://github.com/svrcekmichal/universal-react" target="_blank" rel="external">svrcekmichal/universal-react</a> - Universal react app with async actions provided by <a href="https://github.com/svrcekmichal/reasync" target="_blank" rel="external">svrcekmichal/reasync</a> package</li>
+<li><a href="https://github.com/StevenIseki/react-router-redux-example" target="_blank" rel="external">steveniseki/react-router-redux-example</a> - minimal react-router-redux example includes css modules and universal rendering</li>
+<li><a href="https://github.com/choonkending/react-webpack-node" target="_blank" rel="external">choonkending/react-webpack-node</a> - Full-stack universal Redux App</li>
+<li><a href="https://github.com/kuy/treemap-with-router" target="_blank" rel="external">kuy/treemap-with-router</a> - An example for react-router-redux with d3’s treemap.</li>
+</ul>
+<p>&rarr; <em>Have an example to add? Send us a PR!</em> &larr;</p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h4 id="routerReducer"><a href="#routerReducer" class="headerlink" title="routerReducer()"></a><code>routerReducer()</code></h4><p><strong>You must add this reducer to your store for syncing to work.</strong></p>
+<p>A reducer function that stores location updates from <code>history</code>. If you use <code>combineReducers</code>, it should be nested under the <code>routing</code> key.</p>
+<h4 id="history-syncHistoryWithStore-history-store-options"><a href="#history-syncHistoryWithStore-history-store-options" class="headerlink" title="history = syncHistoryWithStore(history, store, [options])"></a><code>history = syncHistoryWithStore(history, store, [options])</code></h4><p>Creates an enhanced history from the provided history. This history changes <code>history.listen</code> to pass all location updates through the provided store first. This ensures if the store is updated either from a navigation event or from a time travel action, such as a replay, the listeners of the enhanced history will stay in sync.</p>
+<p><strong>You must provide the enhanced history to your <code>&lt;Router&gt;</code> component.</strong> This ensures your routes stay in sync with your location and your store at the same time.</p>
+<p>The <code>options</code> object takes in the following optional keys:</p>
+<ul>
+<li><code>selectLocationState</code> - (default <code>state =&gt; state.routing</code>) A selector function to obtain the history state from your store. Useful when not using the provided <code>routerReducer</code> to store history state. Allows you to use wrappers, such as Immutable.js.</li>
+<li><code>adjustUrlOnReplay</code> - (default <code>true</code>) When <code>false</code>, the URL will not be kept in sync during time travel. This is useful when using <code>persistState</code> from Redux DevTools and not wanting to maintain the URL state when restoring state.</li>
+</ul>
+<h4 id="push-location-replace-location-go-number-goBack-goForward"><a href="#push-location-replace-location-go-number-goBack-goForward" class="headerlink" title="push(location), replace(location), go(number), goBack(), goForward()"></a><code>push(location)</code>, <code>replace(location)</code>, <code>go(number)</code>, <code>goBack()</code>, <code>goForward()</code></h4><p><strong>You must install <code>routerMiddleware</code> for these action creators to work.</strong></p>
+<p>Action creators that correspond with the [history methods of the same name]<br>(<a href="https://github.com/mjackson/history/blob/master/README.md#navigation" target="_blank" rel="external">https://github.com/mjackson/history/blob/master/README.md#navigation</a>). For reference they are defined as follows:</p>
+<ul>
+<li><code>push</code> - Pushes a new location to history, becoming the current location.</li>
+<li><code>replace</code> - Replaces the current location in history.</li>
+<li><code>go</code> - Moves backwards or forwards a relative number of locations in history.</li>
+<li><code>goForward</code> - Moves forward one location. Equivalent to <code>go(1)</code></li>
+<li><code>goBack</code> - Moves backwards one location. Equivalent to <code>go(-1)</code></li>
+</ul>
+<p>Both <code>push</code> and <code>replace</code> take in a <a href="https://github.com/ReactTraining/history/blob/v2/docs/Glossary.md#locationdescriptor" target="_blank" rel="external">location descriptor</a>, which can be an object describing the URL or a plain string URL.</p>
+<p>These action creators are also available in one single object as <code>routerActions</code>, which can be used as a convenience when using Redux’s <code>bindActionCreators()</code>.</p>
+<h4 id="routerMiddleware-history"><a href="#routerMiddleware-history" class="headerlink" title="routerMiddleware(history)"></a><code>routerMiddleware(history)</code></h4><p>A middleware you can apply to your Redux <code>store</code> to capture dispatched actions created by the action creators. It will redirect those actions to the provided <code>history</code> instance.</p>
+<h4 id="LOCATION-CHANGE"><a href="#LOCATION-CHANGE" class="headerlink" title="LOCATION_CHANGE"></a><code>LOCATION_CHANGE</code></h4><p>An action type that you can listen for in your reducers to be notified of route updates. Fires <em>after</em> any changes to history.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat.jpg" alt="墨含 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信号，可以加我好友额！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创好文分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="墨含 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="墨含 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/03/React-router/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/03/03/React-router-redux/"
+     data-title=""
+     data-content=""
+     data-url="https://andyketter.github.io/2017/03/03/React-router-redux/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/03/React-router-redux/"
+           data-title="" data-url="https://andyketter.github.io/2017/03/03/React-router-redux/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/author.jpg"
+               alt="墨含" />
+          <p class="site-author-name" itemprop="name">墨含</p>
+          <p class="site-description motion-element" itemprop="description">你若安好便是晴天</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/AndyKetter" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/baimafeibai" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/project-template/src" title="Todos" target="_blank">Todos</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xiaoxii.com" title="小溪官网" target="_blank">小溪官网</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/ivdert/frame" title="idvert" target="_blank">idvert</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/template/site/product-detail.html" title="detail" target="_blank">detail</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/template/site/trade.html" title="trade" target="_blank">trade</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/template/site" title="home" target="_blank">home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/cloud-site/page" title="cloud-site" target="_blank">cloud-site</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://clife.net" title="C-life" target="_blank">C-life</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://open.clife.net" title="C-life智能云平台" target="_blank">C-life智能云平台</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://cms.clife.cn/clife_authority_manager/login.html" title="C-lift后台管理" target="_blank">C-lift后台管理</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.gmb2b.com/shop/index.php" title="富金机网" target="_blank">富金机网</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/AmazeUI-Template/Tropical-Resorts/html/index.html" title="Tropical-Resorts" target="_blank">Tropical-Resorts</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/AmazeUI-Template/admin/" title="admin" target="_blank">admin</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/AmazeUI-Template/guide/" title="guide" target="_blank">guide</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://luuman.github.io/FrontEndGuide/V1/index.html" title="前端导航" target="_blank">前端导航</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#react-router-redux"><span class="nav-number">1.</span> <span class="nav-text">react-router-redux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-number">1.1.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-It-Works"><span class="nav-number">1.2.</span> <span class="nav-text">How It Works</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tutorial"><span class="nav-number">1.3.</span> <span class="nav-text">Tutorial</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#How-do-I-watch-for-navigation-events-such-as-for-analytics"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">How do I watch for navigation events, such as for analytics?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-if-I-use-Immutable-js-or-another-state-wrapper-with-my-Redux-store"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">What if I use Immutable.js or another state wrapper with my Redux store?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-do-I-access-router-state-in-a-container-component"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">How do I access router state in a container component?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-if-I-want-to-issue-navigation-events-via-Redux-actions"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">What if I want to issue navigation events via Redux actions?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Examples"><span class="nav-number">1.4.</span> <span class="nav-text">Examples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">1.5.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#routerReducer"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">routerReducer()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#history-syncHistoryWithStore-history-store-options"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">history = syncHistoryWithStore(history, store, [options])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#push-location-replace-location-go-number-goBack-goForward"><span class="nav-number">1.5.0.3.</span> <span class="nav-text">push(location), replace(location), go(number), goBack(), goForward()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#routerMiddleware-history"><span class="nav-number">1.5.0.4.</span> <span class="nav-text">routerMiddleware(history)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCATION-CHANGE"><span class="nav-number">1.5.0.5.</span> <span class="nav-text">LOCATION_CHANGE</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">墨含</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"andyketter"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

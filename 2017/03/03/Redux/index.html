@@ -1,0 +1,1121 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="白马非白" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Redux is a predictable state container for JavaScript apps.(If you’re looking for a WordPress framework, check out Redux Framework.)
+It helps you write applications that behave consistently, run in di">
+<meta property="og:type" content="article">
+<meta property="og:title" content="白马非白">
+<meta property="og:url" content="https://andyketter.github.io/2017/03/03/Redux/index.html">
+<meta property="og:site_name" content="白马非白">
+<meta property="og:description" content="Redux is a predictable state container for JavaScript apps.(If you’re looking for a WordPress framework, check out Redux Framework.)
+It helps you write applications that behave consistently, run in di">
+<meta property="og:image" content="https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67">
+<meta property="og:image" content="https://img.shields.io/travis/reactjs/redux/master.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/npm/v/redux.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/npm/dm/redux.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/badge/discord-%23redux%20%40%20reactiflux-61dafb.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/badge/irc-%23rackt%20%40%20freenode-61DAFB.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/badge/changelog-%23187-lightgrey.svg?style=flat-square">
+<meta property="og:updated_time" content="2017-03-03T06:08:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="白马非白">
+<meta name="twitter:description" content="Redux is a predictable state container for JavaScript apps.(If you’re looking for a WordPress framework, check out Redux Framework.)
+It helps you write applications that behave consistently, run in di">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '墨含'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://andyketter.github.io/2017/03/03/Redux/"/>
+
+
+
+
+
+  <title>  | 白马非白 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">白马非白</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">心若没有栖息 到哪都是流浪</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-message">
+          <a href="/message" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-artascope">
+          <a href="http://www.xiaoxii.com/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            小溪
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://andyketter.github.io/2017/03/03/Redux/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="墨含">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/author.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="白马非白">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="白马非白" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-03T14:08:00+08:00">
+                2017-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/03/Redux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/03/Redux/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id=""><a href="#" class="headerlink" title=""></a><a href="http://redux.js.org" target="_blank" rel="external"><img src="https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67" height="60"></a></h1><p>Redux is a predictable state container for JavaScript apps.<br>(If you’re looking for a WordPress framework, check out <a href="https://reduxframework.com/" target="_blank" rel="external">Redux Framework</a>.)</p>
+<p>It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="external">live code editing combined with a time traveling debugger</a>.</p>
+<p>You can use Redux together with <a href="https://facebook.github.io/react/" target="_blank" rel="external">React</a>, or with any other view library.<br>It is tiny (2kB, including dependencies).</p>
+<p><a href="https://travis-ci.org/reactjs/redux" target="_blank" rel="external"><img src="https://img.shields.io/travis/reactjs/redux/master.svg?style=flat-square" alt="build status"></a><br><a href="https://www.npmjs.com/package/redux" target="_blank" rel="external"><img src="https://img.shields.io/npm/v/redux.svg?style=flat-square" alt="npm version"></a><br><a href="https://www.npmjs.com/package/redux" target="_blank" rel="external"><img src="https://img.shields.io/npm/dm/redux.svg?style=flat-square" alt="npm downloads"></a><br><a href="https://discord.gg/0ZcbPKXt5bZ6au5t" target="_blank" rel="external"><img src="https://img.shields.io/badge/discord-%23redux%20%40%20reactiflux-61dafb.svg?style=flat-square" alt="redux channel on discord"></a><br><a href="https://webchat.freenode.net/" target="_blank" rel="external"><img src="https://img.shields.io/badge/irc-%23rackt%20%40%20freenode-61DAFB.svg?style=flat-square" alt="#rackt on freenode"></a><br><a href="https://changelog.com/187" target="_blank" rel="external"><img src="https://img.shields.io/badge/changelog-%23187-lightgrey.svg?style=flat-square" alt="Changelog #187"></a></p>
+<blockquote>
+<p><strong>Learn Redux from its creator:</strong><br><strong><a href="https://egghead.io/series/getting-started-with-redux" target="_blank" rel="external">Part 1: Getting Started with Redux</a> (30 free videos)</strong><br><br><strong><a href="https://egghead.io/courses/building-react-applications-with-idiomatic-redux" target="_blank" rel="external">Part 2: Building React Applications with Idiomatic Redux</a> (27 free videos)</strong></p>
+</blockquote>
+<h3 id="Testimonials"><a href="#Testimonials" class="headerlink" title="Testimonials"></a>Testimonials</h3><blockquote>
+<p><a href="https://twitter.com/jingc/status/616608251463909376" target="_blank" rel="external">“Love what you’re doing with Redux”</a><br>Jing Chen, creator of Flux</p>
+<p><a href="https://twitter.com/fisherwebdev/status/616286955693682688" target="_blank" rel="external">“I asked for comments on Redux in FB’s internal JS discussion group, and it was universally praised. Really awesome work.”</a><br>Bill Fisher, author of Flux documentation</p>
+<p><a href="https://twitter.com/andrestaltz/status/616271392930201604" target="_blank" rel="external">“It’s cool that you are inventing a better Flux by not doing Flux at all.”</a><br>André Staltz, creator of Cycle</p>
+</blockquote>
+<h3 id="Before-Proceeding-Further"><a href="#Before-Proceeding-Further" class="headerlink" title="Before Proceeding Further"></a>Before Proceeding Further</h3><blockquote>
+<p><strong>Also read:</strong><br><strong><a href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367" target="_blank" rel="external">You Might Not Need Redux</a></strong></p>
+</blockquote>
+<h3 id="Developer-Experience"><a href="#Developer-Experience" class="headerlink" title="Developer Experience"></a>Developer Experience</h3><p>I wrote Redux while working on my React Europe talk called <a href="https://www.youtube.com/watch?v=xsSnOQynTHs" target="_blank" rel="external">“Hot Reloading with Time Travel”</a>. My goal was to create a state management library with minimal API but completely predictable behavior, so it is possible to implement logging, hot reloading, time travel, universal apps, record and replay, without any buy-in from the developer.</p>
+<h3 id="Influences"><a href="#Influences" class="headerlink" title="Influences"></a>Influences</h3><p>Redux evolves the ideas of <a href="http://facebook.github.io/flux/" target="_blank" rel="external">Flux</a>, but avoids its complexity by taking cues from <a href="https://github.com/evancz/elm-architecture-tutorial/" target="_blank" rel="external">Elm</a>.<br>Whether you have used them or not, Redux only takes a few minutes to get started with.</p>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install the stable version:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save redux</div></pre></td></tr></table></figure>
+<p>This assumes you are using <a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a> as your package manager.  </p>
+<p>If you’re not, you can <a href="https://unpkg.com/redux/" target="_blank" rel="external">access these files on unpkg</a>, download them, or point your package manager to them.</p>
+<p>Most commonly people consume Redux as a collection of <a href="http://webpack.github.io/docs/commonjs.html" target="_blank" rel="external">CommonJS</a> modules. These modules are what you get when you import <code>redux</code> in a <a href="http://webpack.github.io" target="_blank" rel="external">Webpack</a>, <a href="http://browserify.org/" target="_blank" rel="external">Browserify</a>, or a Node environment. If you like to live on the edge and use <a href="http://rollupjs.org" target="_blank" rel="external">Rollup</a>, we support that as well.</p>
+<p>If you don’t use a module bundler, it’s also fine. The <code>redux</code> npm package includes precompiled production and development <a href="https://github.com/umdjs/umd" target="_blank" rel="external">UMD</a> builds in the <a href="https://unpkg.com/redux/dist/" target="_blank" rel="external"><code>dist</code> folder</a>. They can be used directly without a bundler and are thus compatible with many popular JavaScript module loaders and environments. For example, you can drop a UMD build as a <a href="https://unpkg.com/redux/dist/redux.js" target="_blank" rel="external"><code>&lt;script&gt;</code> tag</a> on the page, or <a href="https://github.com/reactjs/redux/pull/1181#issuecomment-167361975" target="_blank" rel="external">tell Bower to install it</a>. The UMD builds make Redux available as a <code>window.Redux</code> global variable.</p>
+<p>The Redux source code is written in ES2015 but we precompile both CommonJS and UMD builds to ES5 so they work in <a href="http://caniuse.com/#feat=es5" target="_blank" rel="external">any modern browser</a>. You don’t need to use Babel or a module bundler to <a href="https://github.com/reactjs/redux/blob/master/examples/counter-vanilla/index.html" target="_blank" rel="external">get started with Redux</a>.</p>
+<h4 id="Complementary-Packages"><a href="#Complementary-Packages" class="headerlink" title="Complementary Packages"></a>Complementary Packages</h4><p>Most likely, you’ll also need <a href="https://github.com/reactjs/react-redux" target="_blank" rel="external">the React bindings</a> and <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="external">the developer tools</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install --save react-redux</div><div class="line">npm install --save-dev redux-devtools</div></pre></td></tr></table></figure>
+<p>Note that unlike Redux itself, many packages in the Redux ecosystem don’t provide UMD builds, so we recommend using CommonJS module bundlers like <a href="http://webpack.github.io" target="_blank" rel="external">Webpack</a> and <a href="http://browserify.org/" target="_blank" rel="external">Browserify</a> for the most comfortable development experience.</p>
+<h3 id="The-Gist"><a href="#The-Gist" class="headerlink" title="The Gist"></a>The Gist</h3><p>The whole state of your app is stored in an object tree inside a single <em>store</em>.<br>The only way to change the state tree is to emit an <em>action</em>, an object describing what happened.<br>To specify how the actions transform the state tree, you write pure <em>reducers</em>.</p>
+<p>That’s it!</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'redux'</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * This is a reducer, a pure function with (state, action) =&gt; state signature.</div><div class="line"> * It describes how an action transforms the state into the next state.</div><div class="line"> *</div><div class="line"> * The shape of the state is up to you: it can be a primitive, an array, an object,</div><div class="line"> * or even an Immutable.js data structure. The only important part is that you should</div><div class="line"> * not mutate the state object, but return a new object if the state changes.</div><div class="line"> *</div><div class="line"> * In this example, we use a `switch` statement and strings, but you can use a helper that</div><div class="line"> * follows a different convention (such as function maps) if it makes sense for your</div><div class="line"> * project.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params">state = <span class="number">0</span>, action</span>) </span>&#123;</div><div class="line">  <span class="keyword">switch</span> (action.type) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="string">'INCREMENT'</span>:</div><div class="line">    <span class="keyword">return</span> state + <span class="number">1</span></div><div class="line">  <span class="keyword">case</span> <span class="string">'DECREMENT'</span>:</div><div class="line">    <span class="keyword">return</span> state - <span class="number">1</span></div><div class="line">  <span class="keyword">default</span>:</div><div class="line">    <span class="keyword">return</span> state</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Create a Redux store holding the state of your app.</span></div><div class="line"><span class="comment">// Its API is &#123; subscribe, dispatch, getState &#125;.</span></div><div class="line"><span class="keyword">let</span> store = createStore(counter)</div><div class="line"></div><div class="line"><span class="comment">// You can use subscribe() to update the UI in response to state changes.</span></div><div class="line"><span class="comment">// Normally you'd use a view binding library (e.g. React Redux) rather than subscribe() directly.</span></div><div class="line"><span class="comment">// However it can also be handy to persist the current state in the localStorage.</span></div><div class="line"></div><div class="line">store.subscribe(<span class="function"><span class="params">()</span> =&gt;</span></div><div class="line">  <span class="built_in">console</span>.log(store.getState())</div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment">// The only way to mutate the internal state is to dispatch an action.</span></div><div class="line"><span class="comment">// The actions can be serialized, logged or stored and later replayed.</span></div><div class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">'INCREMENT'</span> &#125;)</div><div class="line"><span class="comment">// 1</span></div><div class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">'INCREMENT'</span> &#125;)</div><div class="line"><span class="comment">// 2</span></div><div class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">'DECREMENT'</span> &#125;)</div><div class="line"><span class="comment">// 1</span></div></pre></td></tr></table></figure>
+<p>Instead of mutating the state directly, you specify the mutations you want to happen with plain objects called <em>actions</em>. Then you write a special function called a <em>reducer</em> to decide how every action transforms the entire application’s state.</p>
+<p>If you’re coming from Flux, there is a single important difference you need to understand. Redux doesn’t have a Dispatcher or support many stores. Instead, there is just a single store with a single root reducing function. As your app grows, instead of adding stores, you split the root reducer into smaller reducers independently operating on the different parts of the state tree. This is exactly like how there is just one root component in a React app, but it is composed out of many small components.</p>
+<p>This architecture might seem like an overkill for a counter app, but the beauty of this pattern is how well it scales to large and complex apps. It also enables very powerful developer tools, because it is possible to trace every mutation to the action that caused it. You can record user sessions and reproduce them just by replaying every action.</p>
+<h3 id="Learn-Redux-from-Its-Creator"><a href="#Learn-Redux-from-Its-Creator" class="headerlink" title="Learn Redux from Its Creator"></a>Learn Redux from Its Creator</h3><p><a href="https://egghead.io/series/getting-started-with-redux" target="_blank" rel="external">Getting Started with Redux</a> is a video course consisting of 30 videos narrated by Dan Abramov, author of Redux. It is designed to complement the “Basics” part of the docs while bringing additional insights about immutability, testing, Redux best practices, and using Redux with React. <strong>This course is free and will always be.</strong></p>
+<blockquote>
+<p><a href="https://twitter.com/sandrinodm/status/670548531422326785" target="_blank" rel="external">“Great course on egghead.io by @dan_abramov - instead of just showing you how to use #redux, it also shows how and why redux was built!”</a><br>Sandrino Di Mattia</p>
+<p><a href="https://twitter.com/chrisdhanaraj/status/670328025553219584" target="_blank" rel="external">“Plowing through @dan_abramov ‘Getting Started with Redux’ - its amazing how much simpler concepts get with video.”</a><br>Chris Dhanaraj</p>
+<p><a href="https://twitter.com/eddiezane/status/670333133242408960" target="_blank" rel="external">“This video series on Redux by @dan_abramov on @eggheadio is spectacular!”</a><br>Eddie Zaneski</p>
+<p><a href="https://twitter.com/danott/status/669909126554607617" target="_blank" rel="external">“Come for the name hype. Stay for the rock solid fundamentals. (Thanks, and great job @dan_abramov and @eggheadio!)”</a><br>Dan</p>
+<p><a href="https://twitter.com/gelatindesign/status/669658358643892224" target="_blank" rel="external">“This series of videos on Redux by @dan_abramov is repeatedly blowing my mind - gunna do some serious refactoring”</a><br>Laurence Roberts</p>
+</blockquote>
+<p>So, what are you waiting for?</p>
+<h4 id="Watch-the-30-Free-Videos"><a href="#Watch-the-30-Free-Videos" class="headerlink" title="Watch the 30 Free Videos!"></a><a href="https://egghead.io/series/getting-started-with-redux" target="_blank" rel="external">Watch the 30 Free Videos!</a></h4><p>If you enjoyed my course, consider supporting Egghead by <a href="https://egghead.io/pricing" target="_blank" rel="external">buying a subscription</a>. Subscribers have access to the source code for the example in every one of my videos, as well as to tons of advanced lessons on other topics, including JavaScript in depth, React, Angular, and more. Many <a href="https://egghead.io/instructors" target="_blank" rel="external">Egghead instructors</a> are also open source library authors, so buying a subscription is a nice way to thank them for the work that they’ve done.</p>
+<h3 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h3><ul>
+<li><a href="http://redux.js.org/docs/introduction/index.html" target="_blank" rel="external">Introduction</a></li>
+<li><a href="http://redux.js.org/docs/basics/index.html" target="_blank" rel="external">Basics</a></li>
+<li><a href="http://redux.js.org/docs/advanced/index.html" target="_blank" rel="external">Advanced</a></li>
+<li><a href="http://redux.js.org/docs/recipes/index.html" target="_blank" rel="external">Recipes</a></li>
+<li><a href="http://redux.js.org/docs/Troubleshooting.html" target="_blank" rel="external">Troubleshooting</a></li>
+<li><a href="http://redux.js.org/docs/Glossary.html" target="_blank" rel="external">Glossary</a></li>
+<li><a href="http://redux.js.org/docs/api/index.html" target="_blank" rel="external">API Reference</a></li>
+</ul>
+<p>For PDF, ePub, and MOBI exports for offline reading, and instructions on how to create them, please see: <a href="https://github.com/paulkogel/redux-offline-docs" target="_blank" rel="external">paulkogel/redux-offline-docs</a>.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><ul>
+<li><a href="http://redux.js.org/docs/introduction/Examples.html#counter-vanilla" target="_blank" rel="external">Counter Vanilla</a> (<a href="https://github.com/reactjs/redux/tree/master/examples/counter-vanilla" target="_blank" rel="external">source</a>)</li>
+<li><a href="http://redux.js.org/docs/introduction/Examples.html#counter" target="_blank" rel="external">Counter</a> (<a href="https://github.com/reactjs/redux/tree/master/examples/counter" target="_blank" rel="external">source</a>)</li>
+<li><a href="http://redux.js.org/docs/introduction/Examples.html#todos" target="_blank" rel="external">Todos</a> (<a href="https://github.com/reactjs/redux/tree/master/examples/todos" target="_blank" rel="external">source</a>)</li>
+<li><a href="http://redux.js.org/docs/introduction/Examples.html#todos-with-undo" target="_blank" rel="external">Todos with Undo</a> (<a href="https://github.com/reactjs/redux/tree/master/examples/todos-with-undo" target="_blank" rel="external">source</a>)</li>
+<li><a href="http://redux.js.org/docs/introduction/Examples.html#todomvc" target="_blank" rel="external">TodoMVC</a> (<a href="https://github.com/reactjs/redux/tree/master/examples/todomvc" target="_blank" rel="external">source</a>)</li>
+<li><a href="http://redux.js.org/docs/introduction/Examples.html#shopping-cart" target="_blank" rel="external">Shopping Cart</a> (<a href="https://github.com/reactjs/redux/tree/master/examples/shopping-cart" target="_blank" rel="external">source</a>)</li>
+<li><a href="http://redux.js.org/docs/introduction/Examples.html#tree-view" target="_blank" rel="external">Tree View</a> (<a href="https://github.com/reactjs/redux/tree/master/examples/tree-view" target="_blank" rel="external">source</a>)</li>
+<li><a href="http://redux.js.org/docs/introduction/Examples.html#async" target="_blank" rel="external">Async</a> (<a href="https://github.com/reactjs/redux/tree/master/examples/async" target="_blank" rel="external">source</a>)</li>
+<li><a href="http://redux.js.org/docs/introduction/Examples.html#universal" target="_blank" rel="external">Universal</a> (<a href="https://github.com/reactjs/redux/tree/master/examples/universal" target="_blank" rel="external">source</a>)</li>
+<li><a href="http://redux.js.org/docs/introduction/Examples.html#real-world" target="_blank" rel="external">Real World</a> (<a href="https://github.com/reactjs/redux/tree/master/examples/real-world" target="_blank" rel="external">source</a>)</li>
+</ul>
+<p>If you’re new to the NPM ecosystem and have troubles getting a project up and running, or aren’t sure where to paste the gist above, check out <a href="https://github.com/jackielii/simplest-redux-example" target="_blank" rel="external">simplest-redux-example</a> that uses Redux together with React and Browserify.</p>
+<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h3><p>Join the <a href="https://discord.gg/0ZcbPKXt5bZ6au5t" target="_blank" rel="external">#redux</a> channel of the <a href="http://www.reactiflux.com" target="_blank" rel="external">Reactiflux</a> Discord community.</p>
+<h3 id="Thanks"><a href="#Thanks" class="headerlink" title="Thanks"></a>Thanks</h3><ul>
+<li><a href="https://github.com/evancz/elm-architecture-tutorial" target="_blank" rel="external">The Elm Architecture</a> for a great intro to modeling state updates with reducers;</li>
+<li><a href="http://www.confluent.io/blog/turning-the-database-inside-out-with-apache-samza/" target="_blank" rel="external">Turning the database inside-out</a> for blowing my mind;</li>
+<li><a href="https://www.youtube.com/watch?v=j-kj2qwJa_E" target="_blank" rel="external">Developing ClojureScript with Figwheel</a> for convincing me that re-evaluation should “just work”;</li>
+<li><a href="https://github.com/webpack/docs/wiki/hot-module-replacement-with-webpack" target="_blank" rel="external">Webpack</a> for Hot Module Replacement;</li>
+<li><a href="https://github.com/acdlite/flummox" target="_blank" rel="external">Flummox</a> for teaching me to approach Flux without boilerplate or singletons;</li>
+<li><a href="https://github.com/threepointone/disto" target="_blank" rel="external">disto</a> for a proof of concept of hot reloadable Stores;</li>
+<li><a href="https://github.com/optimizely/nuclear-js" target="_blank" rel="external">NuclearJS</a> for proving this architecture can be performant;</li>
+<li><a href="https://github.com/omcljs/om" target="_blank" rel="external">Om</a> for popularizing the idea of a single state atom;</li>
+<li><a href="https://github.com/cyclejs/cycle-core" target="_blank" rel="external">Cycle</a> for showing how often a function is the best tool;</li>
+<li><a href="https://github.com/facebook/react" target="_blank" rel="external">React</a> for the pragmatic innovation.</li>
+</ul>
+<p>Special thanks to <a href="http://jdpaton.github.io" target="_blank" rel="external">Jamie Paton</a> for handing over the <code>redux</code> NPM package name.</p>
+<h3 id="Logo"><a href="#Logo" class="headerlink" title="Logo"></a>Logo</h3><p>You can find the official logo <a href="https://github.com/reactjs/redux/tree/master/logo" target="_blank" rel="external">on GitHub</a>.</p>
+<h3 id="Change-Log"><a href="#Change-Log" class="headerlink" title="Change Log"></a>Change Log</h3><p>This project adheres to <a href="http://semver.org/" target="_blank" rel="external">Semantic Versioning</a>.<br>Every release, along with the migration instructions, is documented on the Github <a href="https://github.com/reactjs/redux/releases" target="_blank" rel="external">Releases</a> page.</p>
+<h3 id="Patrons"><a href="#Patrons" class="headerlink" title="Patrons"></a>Patrons</h3><p>The work on Redux was <a href="https://www.patreon.com/reactdx" target="_blank" rel="external">funded by the community</a>.<br>Meet some of the outstanding companies that made it possible:</p>
+<ul>
+<li><a href="https://github.com/webflow" target="_blank" rel="external">Webflow</a></li>
+<li><a href="https://www.ximedes.com/" target="_blank" rel="external">Ximedes</a></li>
+</ul>
+<p><a href="PATRONS.md">See the full list of Redux patrons.</a></p>
+<h3 id="License"><a href="#License" class="headerlink" title="License"></a>License</h3><p>MIT</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat.jpg" alt="墨含 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信号，可以加我好友额！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创好文分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="墨含 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="墨含 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/03/React/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/03/React-router/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/03/03/Redux/"
+     data-title=""
+     data-content=""
+     data-url="https://andyketter.github.io/2017/03/03/Redux/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/03/Redux/"
+           data-title="" data-url="https://andyketter.github.io/2017/03/03/Redux/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/author.jpg"
+               alt="墨含" />
+          <p class="site-author-name" itemprop="name">墨含</p>
+          <p class="site-description motion-element" itemprop="description">你若安好便是晴天</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/AndyKetter" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/baimafeibai" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/project-template/src" title="Todos" target="_blank">Todos</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xiaoxii.com" title="小溪官网" target="_blank">小溪官网</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/ivdert/frame" title="idvert" target="_blank">idvert</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/template/site/product-detail.html" title="detail" target="_blank">detail</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/template/site/trade.html" title="trade" target="_blank">trade</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/template/site" title="home" target="_blank">home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/cloud-site/page" title="cloud-site" target="_blank">cloud-site</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://clife.net" title="C-life" target="_blank">C-life</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://open.clife.net" title="C-life智能云平台" target="_blank">C-life智能云平台</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://cms.clife.cn/clife_authority_manager/login.html" title="C-lift后台管理" target="_blank">C-lift后台管理</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.gmb2b.com/shop/index.php" title="富金机网" target="_blank">富金机网</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/AmazeUI-Template/Tropical-Resorts/html/index.html" title="Tropical-Resorts" target="_blank">Tropical-Resorts</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/AmazeUI-Template/admin/" title="admin" target="_blank">admin</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://andyketter.github.io/AmazeUI-Template/guide/" title="guide" target="_blank">guide</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://luuman.github.io/FrontEndGuide/V1/index.html" title="前端导航" target="_blank">前端导航</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Testimonials"><span class="nav-number">1.0.1.</span> <span class="nav-text">Testimonials</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Before-Proceeding-Further"><span class="nav-number">1.0.2.</span> <span class="nav-text">Before Proceeding Further</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Developer-Experience"><span class="nav-number">1.0.3.</span> <span class="nav-text">Developer Experience</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Influences"><span class="nav-number">1.0.4.</span> <span class="nav-text">Influences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Installation"><span class="nav-number">1.0.5.</span> <span class="nav-text">Installation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Complementary-Packages"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">Complementary Packages</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Gist"><span class="nav-number">1.0.6.</span> <span class="nav-text">The Gist</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learn-Redux-from-Its-Creator"><span class="nav-number">1.0.7.</span> <span class="nav-text">Learn Redux from Its Creator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Watch-the-30-Free-Videos"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">Watch the 30 Free Videos!</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Documentation"><span class="nav-number">1.0.8.</span> <span class="nav-text">Documentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">1.0.9.</span> <span class="nav-text">Examples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Discussion"><span class="nav-number">1.0.10.</span> <span class="nav-text">Discussion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thanks"><span class="nav-number">1.0.11.</span> <span class="nav-text">Thanks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logo"><span class="nav-number">1.0.12.</span> <span class="nav-text">Logo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Change-Log"><span class="nav-number">1.0.13.</span> <span class="nav-text">Change Log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Patrons"><span class="nav-number">1.0.14.</span> <span class="nav-text">Patrons</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#License"><span class="nav-number">1.0.15.</span> <span class="nav-text">License</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">墨含</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"andyketter"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
