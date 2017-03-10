@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://andyketter.github.io/about/index.html</loc>
+    
+    <lastmod>2017-03-10T06:28:31.275Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://andyketter.github.io/2017/02/19/React-router-redux/</loc>
     
     <lastmod>2017-03-03T06:22:03.000Z</lastmod>
@@ -61,13 +68,6 @@
     <loc>https://andyketter.github.io/message/index.html</loc>
     
     <lastmod>2017-02-15T10:16:10.462Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://andyketter.github.io/about/index.html</loc>
-    
-    <lastmod>2017-02-15T05:58:08.981Z</lastmod>
     
   </url>
   
